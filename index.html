@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#11100f">
-    <title>LUXEE GROWTH | Digital, with intention</title>
+    <title>LUXEE GROWTH | Elevating Luxury Brands with Digital Excellence</title>
     <meta name="description"
         content="LUXEE GROWTH helps Hyderabad businesses strengthen their digital presence through considered websites, local search, content and practical digital tools.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,13 +16,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
+    <script>
+        try {
+            if (sessionStorage.getItem("luxee-intro-seen") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                document.documentElement.classList.add("intro-off");
+            } else {
+                document.documentElement.classList.add("intro-on");
+            }
+        } catch (error) {
+            document.documentElement.classList.add("intro-off");
+        }
+    </script>
 </head>
 
 <body id="top" data-page="home">
+    <div class="intro" id="intro-screen" aria-hidden="true">
+        <span class="intro-bar intro-bar-top"></span>
+        <span class="intro-bar intro-bar-bottom"></span>
+        <span class="intro-glow"></span>
+        <span class="intro-dust"></span>
+        <div class="intro-logo">
+            <img src="assets/luxee-logo.png" alt="" width="902" height="679">
+            <span class="intro-sweep"></span>
+        </div>
+        <span class="intro-line"></span>
+        <button class="intro-skip" type="button" tabindex="-1">Skip intro</button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo" aria-label="LUXEE GROWTH home">
-                <img class="brand-logo-image" src="luxeegrowthlogo.jpeg" alt="LUXEE GROWTH">
+                <img class="brand-logo-image" src="assets/luxee-logo.png" alt="LUXEE GROWTH">
             </a>
             <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
                 <a class="nav-link" href="index.html" aria-current="page">Home</a>
@@ -40,26 +64,82 @@
 
     <main>
         <section class="home-hero">
-            <div class="hero-image-wrap">
-                <img class="hero-image" src="assets/images/brand-strategy.webp"
-                    alt="Team members collaborating around a desk in a shared workspace" fetchpriority="high">
+            <div class="hero-backdrop" aria-hidden="true">
+                <span class="hero-orb hero-orb-a"></span>
+                <span class="hero-orb hero-orb-b"></span>
+                <span class="hero-grid"></span>
             </div>
-            <div class="hero-shade"></div>
-            <div class="container hero-content reveal">
-                <p class="eyebrow"><span class="eyebrow-rule"></span> Hyderabad · Independent digital studio</p>
-                <h1>Make your next move<br>count <em>online.</em></h1>
-                <p class="hero-subtitle">Thoughtful digital work for businesses ready to show up clearly, reach the
-                    right people and make it easier to take the next step.</p>
-                <div class="hero-actions">
-                    <a class="button button-primary" href="contact.html">Let’s talk about your business
-                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                    <a class="button button-quiet" href="services.html">Explore our services</a>
+            <div class="container hero-layout">
+                <div class="hero-content">
+                    <p class="eyebrow hero-anim"><span class="eyebrow-rule"></span> Premium digital studio · Hyderabad</p>
+                    <h1 class="hero-title">
+                        <span class="hero-line"><span>Elevating Luxury Brands</span></span>
+                        <span class="hero-line"><span>with <em>Digital Excellence</em></span></span>
+                    </h1>
+                    <p class="hero-subtitle hero-anim">Premium websites, local search and brand content, crafted in Hyderabad so your business
+                        looks as good online as it does in person.</p>
+                    <div class="hero-actions hero-anim">
+                        <a class="button button-primary button-shine" href="contact.html">Start your project
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="button button-quiet" href="services.html">Explore our services</a>
+                    </div>
+                </div>
+                <div class="brand-orbit hero-visual" id="hero-visual" style="--n:6">
+                    <span class="orbit-glow" aria-hidden="true"></span>
+                    <span class="orbit-ring" aria-hidden="true"></span>
+                    <span class="logo-shockwave" aria-hidden="true"></span>
+                    <span class="logo-shockwave logo-shockwave-late" aria-hidden="true"></span>
+                    <span class="logo-flare" aria-hidden="true"></span>
+                    <div class="brand-logo3d" data-depth="0.6">
+                        <div class="brand-logo-inner">
+                            <img src="assets/luxee-logo.png" alt="LUXEE GROWTH logo" width="902" height="679" fetchpriority="high">
+                            <span class="logo-shine" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <ul class="orbit-icons" data-depth="1.4" aria-label="Our services">
+                        <li style="--i:0;--x:0.00;--y:-36.00"><a href="services.html#web-design"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i><span>Websites</span></a></li>
+                        <li style="--i:1;--x:37.24;--y:-18.00"><a href="services.html#local-search"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Local search</span></a></li>
+                        <li style="--i:2;--x:37.24;--y:18.00"><a href="services.html#virtual-tours"><i class="fa-solid fa-street-view" aria-hidden="true"></i><span>360° tours</span></a></li>
+                        <li style="--i:3;--x:0.00;--y:36.00"><a href="services.html#nfc-cards"><i class="fa-solid fa-id-card" aria-hidden="true"></i><span>NFC cards</span></a></li>
+                        <li style="--i:4;--x:-37.24;--y:18.00"><a href="services.html#content"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i><span>Marketing</span></a></li>
+                        <li style="--i:5;--x:-37.24;--y:-18.00"><a href="services.html#search"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i><span>SEO</span></a></li>
+                    </ul>
                 </div>
             </div>
             <a class="hero-scroll" href="#intro" aria-label="Scroll to introduction"><span></span> Discover</a>
             <span class="hero-index" aria-hidden="true">01 — 03</span>
         </section>
+
+        <section class="trust-bar" aria-label="Why businesses choose LUXEE GROWTH">
+            <div class="container trust-grid">
+                <div class="trust-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><p><strong>Hyderabad studio</strong>Based in Kompally, working with you directly</p></div>
+                <div class="trust-item"><i class="fa-solid fa-file-signature" aria-hidden="true"></i><p><strong>Clear scope, agreed upfront</strong>You know what is delivered before we begin</p></div>
+                <div class="trust-item"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><p><strong>Direct communication</strong>Reach us by call or WhatsApp at every step</p></div>
+                <div class="trust-item"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i><p><strong>Built for every screen</strong>Fast, mobile-first and easy to use</p></div>
+            </div>
+        </section>
+
+        <div class="marquee" aria-label="Our services">
+            <div class="marquee-track">
+                <ul class="marquee-group">
+                    <li><i class="fa-solid fa-laptop-code" aria-hidden="true"></i>Web design &amp; development</li>
+                    <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local search presence</li>
+                    <li><i class="fa-solid fa-street-view" aria-hidden="true"></i>360° virtual tours</li>
+                    <li><i class="fa-solid fa-id-card" aria-hidden="true"></i>NFC review cards</li>
+                    <li><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>Content &amp; digital marketing</li>
+                    <li><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>Search engine optimisation</li>
+                </ul>
+                <ul class="marquee-group" aria-hidden="true">
+                    <li><i class="fa-solid fa-laptop-code" aria-hidden="true"></i>Web design &amp; development</li>
+                    <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local search presence</li>
+                    <li><i class="fa-solid fa-street-view" aria-hidden="true"></i>360° virtual tours</li>
+                    <li><i class="fa-solid fa-id-card" aria-hidden="true"></i>NFC review cards</li>
+                    <li><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>Content &amp; digital marketing</li>
+                    <li><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>Search engine optimisation</li>
+                </ul>
+            </div>
+        </div>
 
         <section class="intro-section section-pad" id="intro">
             <div class="container intro-grid">
@@ -69,14 +149,14 @@
                 </div>
                 <div class="intro-copy reveal">
                     <h2>Clear thinking for a<br><em>stronger digital presence.</em></h2>
-                    <p>Good digital work begins with knowing the business behind it. We take time to understand what
-                        you offer, who you serve and where a thoughtful change can make a practical difference.</p>
-                    <a class="underlined-link" href="contact.html">Tell us what you have in mind <i
+                    <p>We start by understanding your business, your customers and your goals. Then we build what
+                        genuinely helps you grow.</p>
+                    <a class="underlined-link" href="contact.html">Tell us about your business <i
                             class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
                 <figure class="intro-image reveal">
-                    <img src="assets/images/hero-studio.webp"
-                        alt="Glass-walled corridor in a contemporary office" loading="lazy">
+                    <img src="assets/illustrations/studio-path.svg"
+                        alt="A sequence of golden arches forming a clear path forward" width="600" height="800" loading="lazy">
                     <figcaption>A clear path forward.</figcaption>
                 </figure>
             </div>
@@ -86,7 +166,7 @@
             <div class="container">
                 <div class="section-heading-row reveal">
                     <div>
-                        <span class="eyebrow"><span class="eyebrow-rule"></span> Selected capabilities</span>
+                        <span class="eyebrow"><span class="eyebrow-rule"></span> Core services</span>
                         <h2>Digital essentials,<br><em>beautifully considered.</em></h2>
                     </div>
                     <a class="underlined-link desktop-link" href="services.html">View all services <i
@@ -94,10 +174,11 @@
                 </div>
                 <div class="featured-grid">
                     <a class="feature-card feature-card-tall reveal" href="services.html#web-design">
-                        <img src="assets/images/web-design.webp" alt="Designer working on a website at a laptop"
-                            loading="lazy">
+                        <img src="assets/illustrations/web-design.svg"
+                            alt="Laptop and phone showing a premium website design" loading="lazy">
                         <span class="feature-overlay"></span>
                         <span class="feature-number">01</span>
+                        <span class="feature-icon"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></span>
                         <span class="feature-caption">
                             <small>Digital foundations</small>
                             <strong>Web design & development</strong>
@@ -106,10 +187,11 @@
                         </span>
                     </a>
                     <a class="feature-card reveal" href="services.html#local-search">
-                        <img src="assets/images/instagram-space.webp"
-                            alt="Welcoming hospitality space with considered details" loading="lazy">
+                        <img src="assets/illustrations/local-search.svg"
+                            alt="Gold map pin above a stylised city map with a review card" loading="lazy">
                         <span class="feature-overlay"></span>
                         <span class="feature-number">02</span>
+                        <span class="feature-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
                         <span class="feature-caption">
                             <small>Be found nearby</small>
                             <strong>Local search presence</strong>
@@ -118,10 +200,11 @@
                         </span>
                     </a>
                     <a class="feature-card reveal" href="services.html#content">
-                        <img src="assets/images/content-creation.webp" alt="Creative work taking shape at a desk"
-                            loading="lazy">
+                        <img src="assets/illustrations/content-creation.svg"
+                            alt="Layered social post cards with pen nib, chat and like bubbles" loading="lazy">
                         <span class="feature-overlay"></span>
                         <span class="feature-number">03</span>
+                        <span class="feature-icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span>
                         <span class="feature-caption">
                             <small>Say it with clarity</small>
                             <strong>Content & digital marketing</strong>
@@ -135,23 +218,6 @@
             </div>
         </section>
 
-        <section class="partners-section section-pad" id="partners">
-            <div class="container partners-inner">
-                <div class="partners-heading reveal">
-                    <span class="eyebrow"><span class="eyebrow-rule"></span> Trusted partners · original showcase</span>
-                    <h2>Names from the original site,<br><em>presented transparently.</em></h2>
-                    <p>The previous site listed the businesses below. We have not independently confirmed current
-                        relationships or received approved logo files, so these are shown as text only—not as
-                        endorsements or verified client partnerships.</p>
-                </div>
-                <div class="partner-list reveal" aria-label="Business names previously listed on the website">
-                    <span>DTDC</span>
-                    <span>ANUTEX</span>
-                    <span>JAWED HABIB</span>
-                    <span>APOLLO HOSPITALS</span>
-                </div>
-            </div>
-        </section>
 
         <section class="journal-section section-pad" id="instagram">
             <div class="container">
@@ -159,7 +225,7 @@
                     <div>
                         <span class="eyebrow"><span class="eyebrow-rule"></span> The visual journal</span>
                         <h2>Spaces, ideas<br><em>and the details between.</em></h2>
-                        <p>A small, curated collection of licensed imagery. This is not a live Instagram feed.</p>
+                        <p>Original illustrations inspired by the brands we admire. Follow us on Instagram to see our latest work.</p>
                     </div>
                     <a class="button button-outline" href="https://www.instagram.com/luxury_growth_/"
                         target="_blank" rel="noopener noreferrer">Follow @luxury_growth_ <i
@@ -168,31 +234,28 @@
                 <div class="journal-grid">
                     <a href="https://www.instagram.com/luxury_growth_/" target="_blank" rel="noopener noreferrer"
                         aria-label="Visit LUXEE GROWTH on Instagram">
-                        <img src="assets/images/instagram-space.webp" alt="Warm, carefully designed hospitality
-                            interior" loading="lazy">
+                        <img src="assets/illustrations/journal-space.svg" alt="Line art lounge chair beneath an arched window" loading="lazy">
                         <span class="journal-hover"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
                     </a>
                     <a href="https://www.instagram.com/luxury_growth_/" target="_blank" rel="noopener noreferrer"
                         aria-label="Visit LUXEE GROWTH on Instagram">
-                        <img src="assets/images/instagram-work.webp"
-                            alt="Light-filled contemporary office lounge with a reading chair"
-                            loading="lazy">
+                        <img src="assets/illustrations/journal-work.svg"
+                            alt="A modern desk with a monitor showing a rising chart" loading="lazy">
                         <span class="journal-hover"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
                     </a>
                     <a href="https://www.instagram.com/luxury_growth_/" target="_blank" rel="noopener noreferrer"
                         aria-label="Visit LUXEE GROWTH on Instagram">
-                        <img src="assets/images/instagram-mobile.webp" alt="Digital devices arranged on a clean
-                            workspace" loading="lazy">
+                        <img src="assets/illustrations/journal-mobile.svg" alt="Three smartphones fanned out showing a brand app" loading="lazy">
                         <span class="journal-hover"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
                     </a>
                     <a href="https://www.instagram.com/luxury_growth_/" target="_blank" rel="noopener noreferrer"
                         aria-label="Visit LUXEE GROWTH on Instagram">
-                        <img src="assets/images/virtual-tour.webp" alt="A contemporary glass and steel building"
+                        <img src="assets/illustrations/journal-building.svg" alt="A luxury tower rendered in gold line art"
                             loading="lazy">
                         <span class="journal-hover"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
                     </a>
                 </div>
-                <p class="journal-disclaimer">Static visual inspiration. Visit Instagram for the account’s current
+                <p class="journal-disclaimer">Original vector illustrations. Visit Instagram for the account’s current
                     posts and updates.</p>
             </div>
         </section>
@@ -200,9 +263,49 @@
         <section class="closing-section">
             <div class="container closing-inner reveal">
                 <span class="eyebrow"><span class="eyebrow-rule"></span> A good place to begin</span>
-                <h2>What would you like<br>to make <em>possible?</em></h2>
+                <h2>Ready to elevate<br>your <em>brand?</em></h2>
                 <a class="button button-primary" href="contact.html">Start a conversation <i
                         class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </section>
+
+        <section class="partners-section" id="partners" aria-labelledby="partners-title">
+            <div class="container">
+                <div class="partners-heading reveal">
+                    <span class="eyebrow"><span class="eyebrow-rule"></span> Trusted business partners</span>
+                    <h2 id="partners-title">Brands that <em>trust us</em></h2>
+                    <p>We are proud to work alongside respected names in logistics, retail, beauty and healthcare.</p>
+                </div>
+                <ul class="partner-grid reveal">
+                    <li>
+                        <a class="partner-card" href="https://www.dtdc.in/" target="_blank" rel="noopener noreferrer">
+                            <span class="partner-logo is-wide"><img src="assets/partners/dtdc.png" alt="DTDC logo" width="652" height="146" loading="lazy"></span>
+                            <span class="partner-meta"><strong>DTDC</strong><span>Logistics &amp; courier</span></span>
+                            <i class="fa-solid fa-arrow-up-right-from-square partner-link-icon" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="partner-card" href="https://anutex.com/" target="_blank" rel="noopener noreferrer">
+                            <span class="partner-logo is-square"><img src="assets/partners/anutex.png" alt="ANUTEX logo" width="447" height="447" loading="lazy"></span>
+                            <span class="partner-meta"><strong>ANUTEX</strong><span>Retail &amp; fashion</span></span>
+                            <i class="fa-solid fa-arrow-up-right-from-square partner-link-icon" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="partner-card" href="https://jawedhabib.com/" target="_blank" rel="noopener noreferrer">
+                            <span class="partner-logo is-wide"><img src="assets/partners/jawed-habib.png" alt="JAWED HABIB logo" width="900" height="207" loading="lazy"></span>
+                            <span class="partner-meta"><strong>Jawed Habib</strong><span>Beauty &amp; salons</span></span>
+                            <i class="fa-solid fa-arrow-up-right-from-square partner-link-icon" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="partner-card" href="https://www.apollohospital.co.in/" target="_blank" rel="noopener noreferrer">
+                            <span class="partner-logo is-tall"><img src="assets/partners/apollo-hospitals.svg" alt="APOLLO HOSPITALS logo" width="72" height="53" loading="lazy"></span>
+                            <span class="partner-meta"><strong>Apollo Hospitals</strong><span>Healthcare</span></span>
+                            <i class="fa-solid fa-arrow-up-right-from-square partner-link-icon" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </section>
     </main>
@@ -211,7 +314,7 @@
         <div class="container footer-main">
             <div class="footer-brand">
                 <a href="index.html" aria-label="LUXEE GROWTH home">
-                    <img class="footer-logo-image" src="luxeegrowthlogo.jpeg" alt="LUXEE GROWTH">
+                    <img class="footer-logo-image" src="assets/luxee-logo.png" alt="LUXEE GROWTH">
                 </a>
                 <p>Digital, with intention.</p>
             </div>
@@ -234,6 +337,7 @@
             <a href="#top">Back to top ↑</a>
         </div>
     </footer>
+    <a class="back-to-top" href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
 </body>
 
 </html>

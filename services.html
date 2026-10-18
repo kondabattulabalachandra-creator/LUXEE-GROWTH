@@ -16,13 +16,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
+    <script>
+        try {
+            if (sessionStorage.getItem("luxee-intro-seen") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                document.documentElement.classList.add("intro-off");
+            } else {
+                document.documentElement.classList.add("intro-on");
+            }
+        } catch (error) {
+            document.documentElement.classList.add("intro-off");
+        }
+    </script>
 </head>
 
 <body id="top" data-page="services">
+    <div class="intro" id="intro-screen" aria-hidden="true">
+        <span class="intro-bar intro-bar-top"></span>
+        <span class="intro-bar intro-bar-bottom"></span>
+        <span class="intro-glow"></span>
+        <span class="intro-dust"></span>
+        <div class="intro-logo">
+            <img src="assets/luxee-logo.png" alt="" width="902" height="679">
+            <span class="intro-sweep"></span>
+        </div>
+        <span class="intro-line"></span>
+        <button class="intro-skip" type="button" tabindex="-1">Skip intro</button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo" aria-label="LUXEE GROWTH home">
-                <img class="brand-logo-image" src="luxeegrowthlogo.jpeg" alt="LUXEE GROWTH">
+                <img class="brand-logo-image" src="assets/luxee-logo.png" alt="LUXEE GROWTH">
             </a>
             <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
                 <a class="nav-link" href="index.html">Home</a>
@@ -40,16 +64,35 @@
 
     <main>
         <section class="page-hero services-hero">
-            <div class="page-hero-image">
-                <img src="assets/images/brand-strategy.webp" alt="Colleagues reviewing work around a table"
-                    fetchpriority="high">
+            <div class="page-hero-brand">
+                <div class="brand-orbit" style="--n:6">
+                    <span class="orbit-glow" aria-hidden="true"></span>
+                    <span class="orbit-ring" aria-hidden="true"></span>
+                    <span class="logo-shockwave" aria-hidden="true"></span>
+                    <span class="logo-shockwave logo-shockwave-late" aria-hidden="true"></span>
+                    <span class="logo-flare" aria-hidden="true"></span>
+                    <div class="brand-logo3d" data-depth="0.6">
+                        <div class="brand-logo-inner">
+                            <img src="assets/luxee-logo.png" alt="LUXEE GROWTH logo" width="902" height="679" fetchpriority="high">
+                            <span class="logo-shine" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <ul class="orbit-icons" data-depth="1.4" aria-label="Our services">
+                        <li style="--i:0;--x:0.00;--y:-36.00"><a href="#web-design"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i><span>Websites</span></a></li>
+                        <li style="--i:1;--x:37.24;--y:-18.00"><a href="#local-search"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Local search</span></a></li>
+                        <li style="--i:2;--x:37.24;--y:18.00"><a href="#virtual-tours"><i class="fa-solid fa-street-view" aria-hidden="true"></i><span>360° tours</span></a></li>
+                        <li style="--i:3;--x:0.00;--y:36.00"><a href="#nfc-cards"><i class="fa-solid fa-id-card" aria-hidden="true"></i><span>NFC cards</span></a></li>
+                        <li style="--i:4;--x:-37.24;--y:18.00"><a href="#content"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i><span>Marketing</span></a></li>
+                        <li style="--i:5;--x:-37.24;--y:-18.00"><a href="#search"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i><span>SEO</span></a></li>
+                    </ul>
+                </div>
             </div>
             <div class="page-hero-shade"></div>
             <div class="container page-hero-content reveal">
-                <span class="eyebrow"><span class="eyebrow-rule"></span> What we do</span>
-                <h1>Useful digital work.<br><em>Made for your business.</em></h1>
-                <p>From the first impression to the next enquiry, we help make your digital presence clearer and
-                    easier to use.</p>
+                <span class="eyebrow"><span class="eyebrow-rule"></span> Our services</span>
+                <h1>Premium digital services.<br><em>Built around your brand.</em></h1>
+                <p>Six clear services. Choose one or combine them. Everything is scoped upfront, so you always
+                    know what you will get.</p>
                 <a class="button button-primary" href="contact.html">Find your starting point <i
                         class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
@@ -60,19 +103,19 @@
                 <div class="service-intro reveal">
                     <span class="eyebrow"><span class="eyebrow-rule"></span> Six ways to begin</span>
                     <h2>Choose what matters<br><em>most right now.</em></h2>
-                    <p>Every engagement starts with a conversation. We’ll understand your needs, talk through a
-                        realistic scope and agree on a clear next step.</p>
+                    <p>Not sure where to start? Share your goal and we will recommend the right first step.</p>
                 </div>
 
                 <div class="service-detail-list">
                     <article class="service-detail reveal" id="local-search">
                         <div class="service-detail-image">
-                            <img src="assets/images/instagram-space.webp"
-                                alt="Welcoming local business interior with warm lighting" loading="lazy">
+                            <div class="service-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+                            <img src="assets/illustrations/local-search.svg"
+                                alt="Gold map pin above a stylised city map with a five-star review card" loading="lazy">
                             <span>01 / Be easier to find</span>
                         </div>
                         <div class="service-detail-copy">
-                            <span class="eyebrow">Local visibility</span>
+                            <span class="eyebrow"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Local visibility</span>
                             <h2>Local search & Google Business Profile</h2>
                             <p>Help people nearby find accurate, useful information about your business when they
                                 search. We can review your Google Business Profile, improve its completeness and
@@ -90,12 +133,13 @@
 
                     <article class="service-detail service-detail-reverse reveal" id="virtual-tours">
                         <div class="service-detail-image">
-                            <img src="assets/images/tour-interior.webp"
-                                alt="Bright contemporary home interior with open living and dining space" loading="lazy">
+                            <div class="service-icon"><i class="fa-solid fa-street-view" aria-hidden="true"></i></div>
+                            <img src="assets/illustrations/virtual-tour.svg"
+                                alt="An elegant arched interior wrapped by a 360 degree orbit" loading="lazy">
                             <span>02 / Let them look around</span>
                         </div>
                         <div class="service-detail-copy">
-                            <span class="eyebrow">Immersive imagery</span>
+                            <span class="eyebrow"><i class="fa-solid fa-street-view" aria-hidden="true"></i> Immersive imagery</span>
                             <h2>360° photography & virtual tours</h2>
                             <p>Show customers more of your space before they arrive. A clear, well-planned virtual
                                 tour can help set expectations and make a visit feel more familiar.</p>
@@ -112,12 +156,13 @@
 
                     <article class="service-detail reveal" id="nfc-cards">
                         <div class="service-detail-image">
-                            <img src="assets/images/nfc-digital.webp"
-                                alt="Digital devices arranged neatly on a light surface" loading="lazy">
+                            <div class="service-icon"><i class="fa-solid fa-id-card" aria-hidden="true"></i></div>
+                            <img src="assets/illustrations/nfc-cards.svg"
+                                alt="Premium black and gold NFC card tapping a smartphone" loading="lazy">
                             <span>03 / Make connection simple</span>
                         </div>
                         <div class="service-detail-copy">
-                            <span class="eyebrow">Simple connections</span>
+                            <span class="eyebrow"><i class="fa-solid fa-id-card" aria-hidden="true"></i> Simple connections</span>
                             <h2>NFC review & digital business cards</h2>
                             <p>Give customers and contacts a quick way to reach the right destination. NFC-enabled
                                 cards can open a review page, contact details or a digital business card on a
@@ -135,12 +180,13 @@
 
                     <article class="service-detail service-detail-reverse reveal" id="content">
                         <div class="service-detail-image">
-                            <img src="assets/images/content-creation.webp"
-                                alt="Creative planning and design work in progress" loading="lazy">
+                            <div class="service-icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></div>
+                            <img src="assets/illustrations/content-creation.svg"
+                                alt="Layered social post cards with pen nib, chat and like bubbles" loading="lazy">
                             <span>04 / Find the right words</span>
                         </div>
                         <div class="service-detail-copy">
-                            <span class="eyebrow">Content & communication</span>
+                            <span class="eyebrow"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Content & communication</span>
                             <h2>Digital marketing & content creation</h2>
                             <p>Bring more intention to what you publish. We help shape useful messages and content
                                 around your business, audience and channel—without losing your own voice.</p>
@@ -157,12 +203,13 @@
 
                     <article class="service-detail reveal" id="web-design">
                         <div class="service-detail-image">
-                            <img src="assets/images/web-design.webp" alt="Laptop displaying a website design project"
+                            <div class="service-icon"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></div>
+                            <img src="assets/illustrations/web-design.svg" alt="Laptop and phone showing a premium website design"
                                 loading="lazy">
                             <span>05 / Give your business a home online</span>
                         </div>
                         <div class="service-detail-copy">
-                            <span class="eyebrow">Web design & development</span>
+                            <span class="eyebrow"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i> Web design & development</span>
                             <h2>Websites that make the next step clear</h2>
                             <p>Create a well-structured website that reflects your business, works across screen
                                 sizes and helps visitors find the information they need.</p>
@@ -179,12 +226,13 @@
 
                     <article class="service-detail service-detail-reverse reveal" id="search">
                         <div class="service-detail-image">
-                            <img src="assets/images/search-analytics.webp"
-                                alt="Website analytics displayed on a laptop screen" loading="lazy">
+                            <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i></div>
+                            <img src="assets/illustrations/seo-analytics.svg"
+                                alt="Rising bar chart and growth line inspected by a gold magnifying glass" loading="lazy">
                             <span>06 / Build a stronger foundation</span>
                         </div>
                         <div class="service-detail-copy">
-                            <span class="eyebrow">Search foundations</span>
+                            <span class="eyebrow"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Search foundations</span>
                             <h2>Search engine optimisation</h2>
                             <p>Make it easier for search engines to understand your site and for people to find
                                 useful answers. We focus on sound foundations rather than ranking promises.</p>
@@ -208,11 +256,11 @@
                     <h2>Understand. Agree.<br><em>Move with purpose.</em></h2>
                 </div>
                 <div class="process-steps">
-                    <article class="process-step reveal"><span>01</span><h3>We listen</h3><p>We learn about your
+                    <article class="process-step reveal"><i class="fa-solid fa-ear-listen" aria-hidden="true"></i><span>01</span><h3>We listen</h3><p>We learn about your
                         goals, audience and what is getting in the way.</p></article>
-                    <article class="process-step reveal"><span>02</span><h3>We scope</h3><p>We agree on useful
+                    <article class="process-step reveal"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i><span>02</span><h3>We scope</h3><p>We agree on useful
                         priorities, deliverables and a practical plan.</p></article>
-                    <article class="process-step reveal"><span>03</span><h3>We deliver</h3><p>We keep communication
+                    <article class="process-step reveal"><i class="fa-solid fa-gem" aria-hidden="true"></i><span>03</span><h3>We deliver</h3><p>We keep communication
                         clear as the work takes shape and moves forward.</p></article>
                 </div>
             </div>
@@ -221,7 +269,7 @@
         <section class="closing-section">
             <div class="container closing-inner reveal">
                 <span class="eyebrow"><span class="eyebrow-rule"></span> Let’s find your first step</span>
-                <h2>Thoughtful work starts<br>with a <em>conversation.</em></h2>
+                <h2>Not sure which service fits?<br>Let’s <em>talk it through.</em></h2>
                 <a class="button button-primary" href="contact.html">Talk through your project <i
                         class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
@@ -232,7 +280,7 @@
         <div class="container footer-main">
             <div class="footer-brand">
                 <a href="index.html" aria-label="LUXEE GROWTH home"><img class="footer-logo-image"
-                        src="luxeegrowthlogo.jpeg" alt="LUXEE GROWTH"></a>
+                        src="assets/luxee-logo.png" alt="LUXEE GROWTH"></a>
                 <p>Digital, with intention.</p>
             </div>
             <div class="footer-nav"><a href="index.html">Home</a><a href="services.html"
@@ -248,6 +296,7 @@
         <div class="container footer-bottom"><span>© 2026 LUXEE GROWTH. All rights reserved.</span><span>Kompally,
                 Hyderabad, Telangana</span><a href="index.html">Back to home ↑</a></div>
     </footer>
+    <a class="back-to-top" href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
 </body>
 
 </html>

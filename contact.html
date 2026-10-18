@@ -16,13 +16,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
+    <script>
+        try {
+            if (sessionStorage.getItem("luxee-intro-seen") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                document.documentElement.classList.add("intro-off");
+            } else {
+                document.documentElement.classList.add("intro-on");
+            }
+        } catch (error) {
+            document.documentElement.classList.add("intro-off");
+        }
+    </script>
 </head>
 
 <body id="top" data-page="contact">
+    <div class="intro" id="intro-screen" aria-hidden="true">
+        <span class="intro-bar intro-bar-top"></span>
+        <span class="intro-bar intro-bar-bottom"></span>
+        <span class="intro-glow"></span>
+        <span class="intro-dust"></span>
+        <div class="intro-logo">
+            <img src="assets/luxee-logo.png" alt="" width="902" height="679">
+            <span class="intro-sweep"></span>
+        </div>
+        <span class="intro-line"></span>
+        <button class="intro-skip" type="button" tabindex="-1">Skip intro</button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo" aria-label="LUXEE GROWTH home">
-                <img class="brand-logo-image" src="luxeegrowthlogo.jpeg" alt="LUXEE GROWTH">
+                <img class="brand-logo-image" src="assets/luxee-logo.png" alt="LUXEE GROWTH">
             </a>
             <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
                 <a class="nav-link" href="index.html">Home</a>
@@ -40,16 +64,33 @@
 
     <main>
         <section class="page-hero contact-hero">
-            <div class="page-hero-image">
-                <img src="assets/images/brand-strategy.webp" alt="Business team sharing ideas around a table"
-                    fetchpriority="high">
+            <div class="page-hero-brand">
+                <div class="brand-orbit" style="--n:5">
+                    <span class="orbit-glow" aria-hidden="true"></span>
+                    <span class="orbit-ring" aria-hidden="true"></span>
+                    <span class="logo-shockwave" aria-hidden="true"></span>
+                    <span class="logo-shockwave logo-shockwave-late" aria-hidden="true"></span>
+                    <span class="logo-flare" aria-hidden="true"></span>
+                    <div class="brand-logo3d" data-depth="0.6">
+                        <div class="brand-logo-inner">
+                            <img src="assets/luxee-logo.png" alt="LUXEE GROWTH logo" width="902" height="679" fetchpriority="high">
+                            <span class="logo-shine" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <ul class="orbit-icons" data-depth="1.4" aria-label="Ways to reach us">
+                        <li style="--i:0;--x:0.00;--y:-36.00"><a href="tel:+917732018632"><i class="fa-solid fa-phone" aria-hidden="true"></i><span>Call</span></a></li>
+                        <li style="--i:1;--x:40.90;--y:-11.12"><a href="https://wa.me/917732018632" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span></a></li>
+                        <li style="--i:2;--x:30.00;--y:34.50"><a href="mailto:Luxeegrowth@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Email</span></a></li>
+                        <li style="--i:3;--x:-30.00;--y:34.50"><a href="https://www.instagram.com/luxury_growth_/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
+                        <li style="--i:4;--x:-40.90;--y:-11.12"><a href="#enquiry"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i><span>Enquiry</span></a></li>
+                    </ul>
+                </div>
             </div>
             <div class="page-hero-shade"></div>
             <div class="container page-hero-content reveal">
                 <span class="eyebrow"><span class="eyebrow-rule"></span> Get in touch</span>
-                <h1>Every good project<br>starts with <em>a conversation.</em></h1>
-                <p>Tell us what you’re working on. We’ll listen, ask the right questions and help you find a
-                    sensible next step.</p>
+                <h1>Let’s elevate<br><em>your brand together.</em></h1>
+                <p>Tell us about your business. We will reply with clear, practical next steps.</p>
                 <a class="button button-primary" href="#enquiry">Share your enquiry <i
                         class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
             </div>
@@ -60,8 +101,7 @@
                 <aside class="contact-sidebar reveal">
                     <span class="eyebrow"><span class="eyebrow-rule"></span> LUXEE GROWTH</span>
                     <h2>Here when you’re<br><em>ready to begin.</em></h2>
-                    <p>For a quick conversation, call or message us directly. Or share a few details using the
-                        enquiry form.</p>
+                    <p>Call or WhatsApp us for a quick chat, or fill in the short form below.</p>
 
                     <div class="contact-methods">
                         <a class="contact-method" href="tel:+917732018632">
@@ -99,50 +139,86 @@
                     <form id="contactForm" class="contact-form" novalidate>
                         <span class="eyebrow"><span class="eyebrow-rule"></span> Project enquiry</span>
                         <h2>What can we help you with?</h2>
-                        <p class="form-intro">A few details will help us understand where to start.</p>
+                        <p class="form-intro">Takes less than a minute. We reply within one working day.</p>
 
-                        <div class="input-group">
-                            <label for="name">Your name <span aria-hidden="true">*</span></label>
-                            <input type="text" name="name" id="name" autocomplete="name" placeholder="Full name"
-                                required>
+                        <div class="form-progress" aria-hidden="true">
+                            <div class="form-progress-bar"><span></span></div>
+                            <p><span data-progress-count>0</span> of 5 done</p>
+                        </div>
+
+                        <div class="field">
+                            <i class="fa-regular fa-user field-icon" aria-hidden="true"></i>
+                            <input type="text" name="name" id="name" autocomplete="name" placeholder=" " required minlength="2"
+                                aria-describedby="name-error">
+                            <label for="name">Your name</label>
+                            <i class="fa-solid fa-circle-check field-ok" aria-hidden="true"></i>
+                            <small class="field-error" id="name-error">Please tell us your name.</small>
                         </div>
                         <div class="form-row">
-                            <div class="input-group">
-                                <label for="email">Email address <span aria-hidden="true">*</span></label>
-                                <input type="email" name="email" id="email" autocomplete="email"
-                                    placeholder="you@business.com" required>
+                        <div class="field">
+                            <i class="fa-regular fa-envelope field-icon" aria-hidden="true"></i>
+                            <input type="email" name="email" id="email" autocomplete="email" placeholder=" " required
+                                aria-describedby="email-error">
+                            <label for="email">Email address</label>
+                            <i class="fa-solid fa-circle-check field-ok" aria-hidden="true"></i>
+                            <small class="field-error" id="email-error">Please enter a valid email address.</small>
+                        </div>
+                        <div class="field">
+                            <i class="fa-solid fa-phone field-icon" aria-hidden="true"></i>
+                            <input type="tel" name="phone" id="phone" autocomplete="tel" placeholder=" " required pattern="[+]?[0-9 ]{10,15}" inputmode="tel"
+                                aria-describedby="phone-error">
+                            <label for="phone">Phone number</label>
+                            <i class="fa-solid fa-circle-check field-ok" aria-hidden="true"></i>
+                            <small class="field-error" id="phone-error">Please enter a valid phone number.</small>
+                        </div>
+                        </div>
+
+                        <fieldset class="service-picker" aria-describedby="service-error">
+                            <legend>What do you need?</legend>
+                            <div class="service-chips">
+                                <label class="chip">
+                                    <input type="radio" name="service" value="Website Development" required>
+                                    <span><i class="fa-solid fa-laptop-code" aria-hidden="true"></i>Website</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="radio" name="service" value="Google Maps &amp; Local Visibility">
+                                    <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local search</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="radio" name="service" value="360 Photography &amp; Virtual Tours">
+                                    <span><i class="fa-solid fa-street-view" aria-hidden="true"></i>360° tours</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="radio" name="service" value="NFC Review Cards &amp; Business Cards">
+                                    <span><i class="fa-solid fa-id-card" aria-hidden="true"></i>NFC cards</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="radio" name="service" value="Digital Marketing &amp; Content Creation">
+                                    <span><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>Marketing</span>
+                                </label>
+                                <label class="chip">
+                                    <input type="radio" name="service" value="Google SEO">
+                                    <span><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>SEO</span>
+                                </label>
                             </div>
-                            <div class="input-group">
-                                <label for="phone">Phone number <span aria-hidden="true">*</span></label>
-                                <input type="tel" name="phone" id="phone" autocomplete="tel"
-                                    placeholder="+91 00000 00000" required>
-                            </div>
+                            <small class="field-error" id="service-error">Please choose a service.</small>
+                        </fieldset>
+
+                        <div class="field field-textarea">
+                            <i class="fa-regular fa-message field-icon" aria-hidden="true"></i>
+                            <textarea name="message" id="message" rows="5" placeholder=" " required minlength="10"
+                                maxlength="500" aria-describedby="message-error"></textarea>
+                            <label for="message">Tell us about your project</label>
+                            <i class="fa-solid fa-circle-check field-ok" aria-hidden="true"></i>
+                            <span class="char-count" aria-hidden="true"><span data-char-count>0</span> / 500</span>
+                            <small class="field-error" id="message-error">A short sentence or two helps us prepare.</small>
                         </div>
-                        <div class="input-group">
-                            <label for="service">Service you’re interested in <span
-                                    aria-hidden="true">*</span></label>
-                            <select name="service" id="service" required>
-                                <option value="" disabled selected>Select a service</option>
-                                <option value="Google Maps & Local Visibility">Local search & Google Business Profile</option>
-                                <option value="360 Photography & Virtual Tours">360° photography & virtual tours</option>
-                                <option value="NFC Review Cards & Business Cards">NFC review & digital business cards</option>
-                                <option value="Digital Marketing & Content Creation">Digital marketing & content creation</option>
-                                <option value="Website Development">Website design & development</option>
-                                <option value="Google SEO">Search engine optimisation</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label for="message">Tell us a little about your enquiry <span
-                                    aria-hidden="true">*</span></label>
-                            <textarea name="message" id="message" rows="5"
-                                placeholder="What are you hoping to improve or create?" required></textarea>
-                        </div>
-                        <button type="submit" class="button button-primary full-width">
-                            Prepare message in WhatsApp <i class="fa-brands fa-whatsapp"
-                                aria-hidden="true"></i>
+
+                        <button type="submit" class="button button-primary full-width form-submit">
+                            <span>Send via WhatsApp</span> <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
                         </button>
-                        <p class="form-note">WhatsApp will open with your details prepared. Review the message and
-                            press Send in WhatsApp to deliver your enquiry.</p>
+                        <p class="form-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> WhatsApp opens with your
+                            message ready. Just press Send. Your details are only used to reply to you.</p>
                         <div id="form-status" class="status-box" role="status" aria-live="polite"></div>
                     </form>
                 </div>
@@ -162,7 +238,7 @@
         <div class="container footer-main">
             <div class="footer-brand">
                 <a href="index.html" aria-label="LUXEE GROWTH home">
-                    <img class="footer-logo-image" src="luxeegrowthlogo.jpeg" alt="LUXEE GROWTH">
+                    <img class="footer-logo-image" src="assets/luxee-logo.png" alt="LUXEE GROWTH">
                 </a>
                 <p>Digital, with intention.</p>
             </div>
@@ -179,6 +255,7 @@
         <div class="container footer-bottom"><span>© 2026 LUXEE GROWTH. All rights reserved.</span><span>Kompally,
                 Hyderabad, Telangana</span><a href="index.html">Back to home ↑</a></div>
     </footer>
+    <a class="back-to-top" href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
 </body>
 
 </html>

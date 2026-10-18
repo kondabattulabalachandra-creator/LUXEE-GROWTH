@@ -60,48 +60,204 @@ document.addEventListener("DOMContentLoaded", () => {
         revealItems.forEach(item => revealObserver.observe(item));
     }
 
-    const heroImage = document.querySelector(".home-hero .hero-image");
-    if (heroImage && !reducedMotion && window.matchMedia("(min-width: 961px)").matches) {
-        let parallaxFrame = 0;
-        window.addEventListener("scroll", () => {
-            if (parallaxFrame) {
-                return;
+    const intro = document.getElementById("intro-screen");
+    if (intro) {
+        const root = document.documentElement;
+        const finishIntro = () => {
+            try {
+                sessionStorage.setItem("luxee-intro-seen", "1");
+            } catch (error) {
+                // Storage can be unavailable in private browsing; the intro simply plays again.
             }
+            window.setTimeout(() => {
+                intro.remove();
+                root.classList.remove("intro-on");
+                root.classList.add("intro-off");
+            }, 700);
+        };
 
-            parallaxFrame = window.requestAnimationFrame(() => {
-                const heroBottom = document.querySelector(".home-hero").getBoundingClientRect().bottom;
-                heroImage.style.setProperty("--hero-shift", `${Math.min(0, heroBottom) * -0.025}px`);
-                parallaxFrame = 0;
+        if (root.classList.contains("intro-on")) {
+            const skipIntro = () => {
+                intro.classList.add("intro-leave");
+                root.classList.remove("intro-on");
+                finishIntro();
+            };
+            intro.addEventListener("click", skipIntro, { once: true });
+            document.addEventListener("keydown", skipIntro, { once: true });
+            intro.addEventListener("animationend", event => {
+                if (event.target === intro && event.animationName === "intro-out") {
+                    finishIntro();
+                }
             });
-        }, { passive: true });
+        } else {
+            intro.remove();
+        }
+    }
+
+    const navbar = document.querySelector(".navbar");
+    const progress = document.querySelector(".scroll-progress");
+    const backToTop = document.querySelector(".back-to-top");
+    let scrollFrame = 0;
+    const onScroll = () => {
+        scrollFrame = 0;
+        const scrollTop = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        if (progress) {
+            progress.style.setProperty("--progress", maxScroll > 0 ? (scrollTop / maxScroll).toFixed(4) : "0");
+        }
+        if (navbar) {
+            navbar.classList.toggle("is-scrolled", scrollTop > 40);
+        }
+        if (backToTop) {
+            backToTop.classList.toggle("is-visible", scrollTop > window.innerHeight * 0.8);
+        }
+    };
+    window.addEventListener("scroll", () => {
+        if (!scrollFrame) {
+            scrollFrame = window.requestAnimationFrame(onScroll);
+        }
+    }, { passive: true });
+    onScroll();
+
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (finePointer && !reducedMotion) {
+        document.querySelectorAll(".brand-orbit").forEach(orbit => {
+            const stage = orbit.closest("section") || orbit;
+            const layers = orbit.querySelectorAll("[data-depth]");
+            const logo = orbit.querySelector(".brand-logo3d");
+            stage.addEventListener("pointermove", event => {
+                const rect = stage.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width - 0.5;
+                const y = (event.clientY - rect.top) / rect.height - 0.5;
+                layers.forEach(layer => {
+                    const depth = Number(layer.dataset.depth) || 1;
+                    layer.style.setProperty("--px", `${(x * depth * 18).toFixed(1)}px`);
+                    layer.style.setProperty("--py", `${(y * depth * 18).toFixed(1)}px`);
+                });
+                if (logo) {
+                    logo.style.setProperty("--rx", `${(-y * 16).toFixed(2)}deg`);
+                    logo.style.setProperty("--ry", `${(x * 22).toFixed(2)}deg`);
+                }
+            });
+            stage.addEventListener("pointerleave", () => {
+                layers.forEach(layer => {
+                    layer.style.setProperty("--px", "0px");
+                    layer.style.setProperty("--py", "0px");
+                });
+                if (logo) {
+                    logo.style.setProperty("--rx", "0deg");
+                    logo.style.setProperty("--ry", "0deg");
+                }
+            });
+        });
+    }
+
+    if (finePointer) {
+        document.querySelectorAll(".feature-card, .journal-grid a, .service-detail").forEach(card => {
+            const canTilt = !reducedMotion && !card.classList.contains("service-detail");
+            if (canTilt) {
+                card.dataset.tilt = "";
+            }
+            card.addEventListener("pointermove", event => {
+                const rect = card.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width;
+                const y = (event.clientY - rect.top) / rect.height;
+                card.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
+                card.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
+                if (canTilt) {
+                    card.style.setProperty("--rx", `${((0.5 - y) * 7).toFixed(2)}deg`);
+                    card.style.setProperty("--ry", `${((x - 0.5) * 9).toFixed(2)}deg`);
+                }
+            });
+            card.addEventListener("pointerleave", () => {
+                card.style.setProperty("--rx", "0deg");
+                card.style.setProperty("--ry", "0deg");
+            });
+        });
     }
 
     const contactForm = document.getElementById("contactForm");
     const statusBox = document.getElementById("form-status");
-    const serviceSelect = document.getElementById("service");
+    const serviceRadios = contactForm ? [...contactForm.querySelectorAll('input[name="service"]')] : [];
+    const servicePicker = contactForm ? contactForm.querySelector(".service-picker") : null;
+    const textFields = contactForm ? [...contactForm.querySelectorAll(".field input, .field textarea")] : [];
+    const progressBar = contactForm ? contactForm.querySelector(".form-progress-bar span") : null;
+    const progressCount = contactForm ? contactForm.querySelector("[data-progress-count]") : null;
+    const charCount = contactForm ? contactForm.querySelector("[data-char-count]") : null;
 
-    if (serviceSelect) {
-        const requestedService = new URLSearchParams(window.location.search).get("service");
-        if (requestedService && [...serviceSelect.options].some(option => option.value === requestedService)) {
-            serviceSelect.value = requestedService;
+    const requestedService = new URLSearchParams(window.location.search).get("service");
+    const requestedRadio = serviceRadios.find(radio => radio.value === requestedService);
+    if (requestedRadio) {
+        requestedRadio.checked = true;
+    }
+
+    const fieldIsValid = field => field.checkValidity() && field.value.trim().length > 0;
+    const serviceIsChosen = () => serviceRadios.some(radio => radio.checked);
+
+    const markField = (field, showError) => {
+        const wrapper = field.closest(".field");
+        const valid = fieldIsValid(field);
+        wrapper.classList.toggle("is-valid", valid);
+        if (valid) {
+            wrapper.classList.remove("is-invalid");
+        } else if (showError) {
+            wrapper.classList.add("is-invalid");
         }
+        return valid;
+    };
+
+    const markService = showError => {
+        const chosen = serviceIsChosen();
+        servicePicker.classList.toggle("is-valid", chosen);
+        if (chosen) {
+            servicePicker.classList.remove("is-invalid");
+        } else if (showError) {
+            servicePicker.classList.add("is-invalid");
+        }
+        return chosen;
+    };
+
+    const updateProgress = () => {
+        const done = textFields.filter(fieldIsValid).length + (serviceIsChosen() ? 1 : 0);
+        const total = textFields.length + 1;
+        if (progressBar) progressBar.style.width = `${(done / total) * 100}%`;
+        if (progressCount) progressCount.textContent = done;
+        contactForm.classList.toggle("is-ready", done === total);
+    };
+
+    if (contactForm && servicePicker) {
+        textFields.forEach(field => {
+            field.addEventListener("input", () => {
+                markField(field, false);
+                if (charCount && field.id === "message") charCount.textContent = field.value.length;
+                updateProgress();
+            });
+            field.addEventListener("blur", () => {
+                if (field.value.trim()) markField(field, true);
+            });
+        });
+
+        serviceRadios.forEach(radio => radio.addEventListener("change", () => {
+            markService(false);
+            updateProgress();
+        }));
+
+        if (requestedRadio) markService(false);
+        updateProgress();
     }
 
     if (contactForm && statusBox) {
         contactForm.addEventListener("submit", event => {
             event.preventDefault();
 
-            if (!contactForm.checkValidity()) {
-                contactForm.reportValidity();
-                statusBox.textContent = "Please complete all required fields and enter a valid email address.";
-                return;
-            }
-
-            const blankRequiredField = [...contactForm.querySelectorAll("[required]")]
-                .find(field => !field.value.trim());
-            if (blankRequiredField) {
-                blankRequiredField.focus();
-                statusBox.textContent = "Please do not leave required fields blank.";
+            const invalidFields = textFields.filter(field => !markField(field, true));
+            const serviceOk = markService(true);
+            if (invalidFields.length || !serviceOk) {
+                const firstInvalid = contactForm.querySelector(".is-invalid");
+                const focusTarget = firstInvalid && firstInvalid.querySelector("input, textarea");
+                if (focusTarget) focusTarget.focus();
+                statusBox.textContent = "Almost there. Please check the highlighted details.";
                 return;
             }
 
@@ -116,6 +272,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 `Enquiry: ${valueFor("message")}`
             ].join("\n");
             const whatsappUrl = `https://wa.me/917732018632?text=${encodeURIComponent(message)}`;
+
+            fetch("process_contact.php", { method: "POST", body: formData, keepalive: true }).catch(() => {});
 
             const whatsappWindow = window.open(whatsappUrl, "_blank");
             if (whatsappWindow) {

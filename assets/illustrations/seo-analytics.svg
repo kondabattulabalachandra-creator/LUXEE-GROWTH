@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Rising bar chart and growth line inspected by a gold magnifying glass">
+<title>Rising bar chart and growth line inspected by a gold magnifying glass</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1c17"/><stop offset="1" stop-color="#0c0b0a"/></linearGradient>
+<linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="600"><stop offset="0" stop-color="#f4e8c8"/><stop offset=".45" stop-color="#d2b980"/><stop offset="1" stop-color="#8d6f44"/></linearGradient>
+<linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1e2bb"/><stop offset="1" stop-color="#9c7b4b"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2eee6" stop-opacity=".1"/><stop offset="1" stop-color="#f2eee6" stop-opacity=".02"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2620"/><stop offset="1" stop-color="#0e0d0c"/></linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="#d9c08a" stop-opacity=".42"/><stop offset=".55" stop-color="#c9b17d" stop-opacity=".1"/><stop offset="1" stop-color="#c9b17d" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#f2eee6" fill-opacity=".07"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity=".55"/></filter>
+</defs>
+<style>
+.g{fill:none;stroke:url(#gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.t{stroke-width:1.2;opacity:.5}
+.p{fill:url(#glass);stroke:url(#gold);stroke-opacity:.6;stroke-width:1.4}
+.d{fill:#141310;stroke:url(#gold);stroke-opacity:.7;stroke-width:1.4}
+.gf{fill:url(#gold)}
+.i{fill:#f2eee6}
+.sp{fill:#f1e2bb}
+.serif{font-family:"Playfair Display",Georgia,"Times New Roman",serif;fill:url(#gold)}
+.float{animation:float 6s ease-in-out infinite}
+.float2{animation:float 7s ease-in-out -2.5s infinite}
+.spin{transform-box:view-box;animation:spin 60s linear infinite}
+.spinr{transform-box:view-box;animation:spin 90s linear reverse infinite}
+.twinkle{transform-box:fill-box;transform-origin:center;animation:twinkle 3.2s ease-in-out infinite}
+.twinkle:nth-of-type(2n){animation-delay:-1.4s}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.8s ease-out infinite}
+.pulse.b{animation-delay:-.9s}.pulse.c{animation-delay:-1.8s}
+.draw{stroke-dasharray:1400;stroke-dashoffset:0;animation:draw 3.2s cubic-bezier(.2,.7,.2,1) .4s backwards}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes pulse{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.25)}}
+@keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="800" height="600" fill="url(#bg)"/>
+<rect width="800" height="600" fill="url(#dots)"/>
+<circle cx="420" cy="290" r="330" fill="url(#glow)" opacity="1"/>
+
+<g filter="url(#shadow)"><rect x="140" y="140" width="460" height="310" rx="22" class="d"/></g>
+<path d="M170 410 H580" class="g t"/>
+<path d="M170 350 H580 M170 290 H580 M170 230 H580" class="g t" opacity=".2"/>
+<rect x="190" y="350" width="36" height="60" rx="7" fill="url(#goldV)" fill-opacity="0.25"/><rect x="250" y="315" width="36" height="95" rx="7" fill="url(#goldV)" fill-opacity="0.38"/><rect x="310" y="330" width="36" height="80" rx="7" fill="url(#goldV)" fill-opacity="0.51"/><rect x="370" y="275" width="36" height="135" rx="7" fill="url(#goldV)" fill-opacity="0.64"/><rect x="430" y="240" width="36" height="170" rx="7" fill="url(#goldV)" fill-opacity="0.77"/><rect x="490" y="190" width="36" height="220" rx="7" fill="url(#goldV)" fill-opacity="0.90"/>
+<path class="g draw" stroke-width="3" d="M208 330 L268 300 L328 312 L388 255 L448 222 L508 170 L640 96"/>
+<path class="g" stroke-width="3" d="M612 92 L642 94 L638 124"/>
+<circle cx="208" cy="330" r="5" class="gf"/><circle cx="268" cy="300" r="5" class="gf"/><circle cx="328" cy="312" r="5" class="gf"/><circle cx="388" cy="255" r="5" class="gf"/><circle cx="448" cy="222" r="5" class="gf"/><circle cx="508" cy="170" r="6" class="gf"/>
+<g class="float">
+<path d="M622 330 L690 398" stroke="url(#gold)" stroke-width="18" stroke-linecap="round"/>
+<circle cx="570" cy="280" r="78" fill="#141310" fill-opacity=".72" stroke="url(#gold)" stroke-width="6"/>
+<circle cx="570" cy="280" r="64" class="g t"/>
+<path d="M528 304 L556 280 L574 292 L610 252" class="g" stroke-width="4"/>
+<path d="M594 250 L612 250 L612 268" class="g" stroke-width="4"/>
+</g>
+<g filter="url(#shadow)"><rect x="170" y="80" width="300" height="46" rx="23" class="d"/></g>
+<circle cx="198" cy="103" r="9" class="g"/><path d="M205 110 L212 117" class="g"/>
+<rect x="226" y="99" width="160" height="7" rx="3.5" class="i" opacity=".5"/>
+<circle cx="180" cy="500" r="26" class="gf"/><path d="M168 500 l8 8 l16 -16" fill="none" stroke="#141310" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="220" y="490" width="140" height="8" rx="4" class="i" opacity=".6"/><rect x="220" y="505" width="90" height="6" rx="3" class="i" opacity=".3"/>
+<path class="sp twinkle" d="M700 178 Q700 190 712 190 Q700 190 700 202 Q700 190 688 190 Q700 190 700 178Z"/><path class="sp twinkle" d="M100 242 Q100 250 108 250 Q100 250 100 258 Q100 250 92 250 Q100 250 100 242Z"/>
+
+</svg>

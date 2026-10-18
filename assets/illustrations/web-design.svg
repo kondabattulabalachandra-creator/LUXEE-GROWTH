@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Laptop and phone showing a premium website design">
+<title>Laptop and phone showing a premium website design</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1c17"/><stop offset="1" stop-color="#0c0b0a"/></linearGradient>
+<linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="600"><stop offset="0" stop-color="#f4e8c8"/><stop offset=".45" stop-color="#d2b980"/><stop offset="1" stop-color="#8d6f44"/></linearGradient>
+<linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1e2bb"/><stop offset="1" stop-color="#9c7b4b"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2eee6" stop-opacity=".1"/><stop offset="1" stop-color="#f2eee6" stop-opacity=".02"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2620"/><stop offset="1" stop-color="#0e0d0c"/></linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="#d9c08a" stop-opacity=".42"/><stop offset=".55" stop-color="#c9b17d" stop-opacity=".1"/><stop offset="1" stop-color="#c9b17d" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#f2eee6" fill-opacity=".07"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity=".55"/></filter>
+</defs>
+<style>
+.g{fill:none;stroke:url(#gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.t{stroke-width:1.2;opacity:.5}
+.p{fill:url(#glass);stroke:url(#gold);stroke-opacity:.6;stroke-width:1.4}
+.d{fill:#141310;stroke:url(#gold);stroke-opacity:.7;stroke-width:1.4}
+.gf{fill:url(#gold)}
+.i{fill:#f2eee6}
+.sp{fill:#f1e2bb}
+.serif{font-family:"Playfair Display",Georgia,"Times New Roman",serif;fill:url(#gold)}
+.float{animation:float 6s ease-in-out infinite}
+.float2{animation:float 7s ease-in-out -2.5s infinite}
+.spin{transform-box:view-box;animation:spin 60s linear infinite}
+.spinr{transform-box:view-box;animation:spin 90s linear reverse infinite}
+.twinkle{transform-box:fill-box;transform-origin:center;animation:twinkle 3.2s ease-in-out infinite}
+.twinkle:nth-of-type(2n){animation-delay:-1.4s}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.8s ease-out infinite}
+.pulse.b{animation-delay:-.9s}.pulse.c{animation-delay:-1.8s}
+.draw{stroke-dasharray:1400;stroke-dashoffset:0;animation:draw 3.2s cubic-bezier(.2,.7,.2,1) .4s backwards}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes pulse{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.25)}}
+@keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="800" height="600" fill="url(#bg)"/>
+<rect width="800" height="600" fill="url(#dots)"/>
+<circle cx="470" cy="280" r="330" fill="url(#glow)" opacity="1"/>
+
+<g filter="url(#shadow)">
+<rect x="170" y="120" width="440" height="285" rx="16" class="d"/>
+<rect x="188" y="138" width="404" height="249" rx="8" fill="#0f0e0d" stroke="url(#gold)" stroke-opacity=".25"/>
+<path d="M120 410 H660 L628 438 H152 Z" class="gf" opacity=".9"/>
+<rect x="350" y="410" width="80" height="6" rx="3" fill="#0f0e0d" opacity=".5"/>
+</g>
+<circle cx="208" cy="156" r="4" class="gf"/><circle cx="222" cy="156" r="4" class="gf" opacity=".6"/><circle cx="236" cy="156" r="4" class="gf" opacity=".35"/>
+<path d="M290 156 H420" class="g t"/>
+<rect x="520" y="149" width="56" height="14" rx="7" class="gf"/>
+<rect x="208" y="190" width="170" height="15" rx="3" class="i" opacity=".85"/>
+<rect x="208" y="213" width="125" height="15" rx="3" class="gf" opacity=".8"/>
+<rect x="208" y="242" width="150" height="5" rx="2.5" class="i" opacity=".25"/>
+<rect x="208" y="254" width="120" height="5" rx="2.5" class="i" opacity=".25"/>
+<rect x="208" y="274" width="74" height="22" rx="11" class="gf"/>
+<rect x="400" y="184" width="170" height="118" rx="10" class="p"/>
+<polygon points="485,206 517,236 485,282 453,236" class="g"/>
+<path d="M453 236 H517 M470 236 L485 282 L500 236 M485 206 L470 236 M485 206 L500 236" class="g t"/>
+<rect x="208" y="318" width="112" height="50" rx="7" class="p"/><rect x="332" y="318" width="112" height="50" rx="7" class="p"/><rect x="456" y="318" width="114" height="50" rx="7" class="p"/>
+<g class="float2">
+<g filter="url(#shadow)">
+<rect x="560" y="250" width="124" height="236" rx="22" class="d"/>
+</g>
+<rect x="571" y="268" width="102" height="202" rx="12" fill="#0f0e0d"/>
+<rect x="607" y="257" width="30" height="4" rx="2" class="gf" opacity=".6"/>
+<rect x="582" y="282" width="80" height="52" rx="7" class="p"/>
+<polygon points="622,292 636,306 622,326 608,306" class="g" stroke-width="1.6"/>
+<rect x="582" y="346" width="70" height="7" rx="3" class="i" opacity=".7"/>
+<rect x="582" y="359" width="48" height="5" rx="2.5" class="i" opacity=".3"/>
+<rect x="582" y="375" width="52" height="15" rx="7.5" class="gf"/>
+<rect x="582" y="402" width="80" height="22" rx="5" class="p"/><rect x="582" y="430" width="80" height="22" rx="5" class="p"/>
+</g>
+<path d="M300 288 l0 28 l8 -8 l6 13 l6 -3 l-6 -12 l11 -1 z" class="i" opacity=".95"/>
+<g class="float"><path d="M110 170 l-22 22 l22 22 M150 170 l22 22 l-22 22 M138 162 l-16 60" class="g" stroke-width="3"/></g>
+<path class="sp twinkle" d="M660 137 Q660 150 673 150 Q660 150 660 163 Q660 150 647 150 Q660 150 660 137Z"/><path class="sp twinkle" d="M115 461 Q115 470 124 470 Q115 470 115 479 Q115 470 106 470 Q115 470 115 461Z"/><path class="sp twinkle" d="M715 354 Q715 360 721 360 Q715 360 715 366 Q715 360 709 360 Q715 360 715 354Z"/>
+
+</svg>

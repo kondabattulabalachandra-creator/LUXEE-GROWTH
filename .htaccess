@@ -1,0 +1,3 @@
+<FilesMatch "\.(csv|log)$">
+    Require all denied
+</FilesMatch>
