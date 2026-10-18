@@ -121,24 +121,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-    const heroVisual = document.getElementById("hero-visual");
-    if (heroVisual && finePointer && !reducedMotion) {
-        const layers = heroVisual.querySelectorAll("[data-depth]");
-        const hero = document.querySelector(".home-hero");
-        hero.addEventListener("pointermove", event => {
-            const rect = hero.getBoundingClientRect();
-            const x = (event.clientX - rect.left) / rect.width - 0.5;
-            const y = (event.clientY - rect.top) / rect.height - 0.5;
-            layers.forEach(layer => {
-                const depth = Number(layer.dataset.depth) || 1;
-                layer.style.setProperty("--px", `${(x * depth * 18).toFixed(1)}px`);
-                layer.style.setProperty("--py", `${(y * depth * 18).toFixed(1)}px`);
+    if (finePointer && !reducedMotion) {
+        document.querySelectorAll(".brand-orbit").forEach(orbit => {
+            const stage = orbit.closest("section") || orbit;
+            const layers = orbit.querySelectorAll("[data-depth]");
+            const logo = orbit.querySelector(".brand-logo3d");
+            stage.addEventListener("pointermove", event => {
+                const rect = stage.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width - 0.5;
+                const y = (event.clientY - rect.top) / rect.height - 0.5;
+                layers.forEach(layer => {
+                    const depth = Number(layer.dataset.depth) || 1;
+                    layer.style.setProperty("--px", `${(x * depth * 18).toFixed(1)}px`);
+                    layer.style.setProperty("--py", `${(y * depth * 18).toFixed(1)}px`);
+                });
+                if (logo) {
+                    logo.style.setProperty("--rx", `${(-y * 16).toFixed(2)}deg`);
+                    logo.style.setProperty("--ry", `${(x * 22).toFixed(2)}deg`);
+                }
             });
-        });
-        hero.addEventListener("pointerleave", () => {
-            layers.forEach(layer => {
-                layer.style.setProperty("--px", "0px");
-                layer.style.setProperty("--py", "0px");
+            stage.addEventListener("pointerleave", () => {
+                layers.forEach(layer => {
+                    layer.style.setProperty("--px", "0px");
+                    layer.style.setProperty("--py", "0px");
+                });
+                if (logo) {
+                    logo.style.setProperty("--rx", "0deg");
+                    logo.style.setProperty("--ry", "0deg");
+                }
             });
         });
     }
