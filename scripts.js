@@ -179,30 +179,85 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const contactForm = document.getElementById("contactForm");
     const statusBox = document.getElementById("form-status");
-    const serviceSelect = document.getElementById("service");
+    const serviceRadios = contactForm ? [...contactForm.querySelectorAll('input[name="service"]')] : [];
+    const servicePicker = contactForm ? contactForm.querySelector(".service-picker") : null;
+    const textFields = contactForm ? [...contactForm.querySelectorAll(".field input, .field textarea")] : [];
+    const progressBar = contactForm ? contactForm.querySelector(".form-progress-bar span") : null;
+    const progressCount = contactForm ? contactForm.querySelector("[data-progress-count]") : null;
+    const charCount = contactForm ? contactForm.querySelector("[data-char-count]") : null;
 
-    if (serviceSelect) {
-        const requestedService = new URLSearchParams(window.location.search).get("service");
-        if (requestedService && [...serviceSelect.options].some(option => option.value === requestedService)) {
-            serviceSelect.value = requestedService;
+    const requestedService = new URLSearchParams(window.location.search).get("service");
+    const requestedRadio = serviceRadios.find(radio => radio.value === requestedService);
+    if (requestedRadio) {
+        requestedRadio.checked = true;
+    }
+
+    const fieldIsValid = field => field.checkValidity() && field.value.trim().length > 0;
+    const serviceIsChosen = () => serviceRadios.some(radio => radio.checked);
+
+    const markField = (field, showError) => {
+        const wrapper = field.closest(".field");
+        const valid = fieldIsValid(field);
+        wrapper.classList.toggle("is-valid", valid);
+        if (valid) {
+            wrapper.classList.remove("is-invalid");
+        } else if (showError) {
+            wrapper.classList.add("is-invalid");
         }
+        return valid;
+    };
+
+    const markService = showError => {
+        const chosen = serviceIsChosen();
+        servicePicker.classList.toggle("is-valid", chosen);
+        if (chosen) {
+            servicePicker.classList.remove("is-invalid");
+        } else if (showError) {
+            servicePicker.classList.add("is-invalid");
+        }
+        return chosen;
+    };
+
+    const updateProgress = () => {
+        const done = textFields.filter(fieldIsValid).length + (serviceIsChosen() ? 1 : 0);
+        const total = textFields.length + 1;
+        if (progressBar) progressBar.style.width = `${(done / total) * 100}%`;
+        if (progressCount) progressCount.textContent = done;
+        contactForm.classList.toggle("is-ready", done === total);
+    };
+
+    if (contactForm && servicePicker) {
+        textFields.forEach(field => {
+            field.addEventListener("input", () => {
+                markField(field, false);
+                if (charCount && field.id === "message") charCount.textContent = field.value.length;
+                updateProgress();
+            });
+            field.addEventListener("blur", () => {
+                if (field.value.trim()) markField(field, true);
+            });
+        });
+
+        serviceRadios.forEach(radio => radio.addEventListener("change", () => {
+            markService(false);
+            updateProgress();
+        }));
+
+        if (requestedRadio) markService(false);
+        updateProgress();
     }
 
     if (contactForm && statusBox) {
         contactForm.addEventListener("submit", event => {
             event.preventDefault();
 
-            if (!contactForm.checkValidity()) {
-                contactForm.reportValidity();
-                statusBox.textContent = "Please complete all required fields and enter a valid email address.";
-                return;
-            }
-
-            const blankRequiredField = [...contactForm.querySelectorAll("[required]")]
-                .find(field => !field.value.trim());
-            if (blankRequiredField) {
-                blankRequiredField.focus();
-                statusBox.textContent = "Please do not leave required fields blank.";
+            const invalidFields = textFields.filter(field => !markField(field, true));
+            const serviceOk = markService(true);
+            if (invalidFields.length || !serviceOk) {
+                const firstInvalid = contactForm.querySelector(".is-invalid");
+                const focusTarget = firstInvalid && firstInvalid.querySelector("input, textarea");
+                if (focusTarget) focusTarget.focus();
+                statusBox.textContent = "Almost there. Please check the highlighted details.";
                 return;
             }
 
