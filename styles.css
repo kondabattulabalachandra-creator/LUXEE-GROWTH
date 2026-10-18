@@ -3431,3 +3431,31 @@ h2 em {
         animation: none;
     }
 }
+
+/* ---------- Phone-first hero ---------- */
+@media (max-width: 960px) {
+    .page-hero-brand {
+        margin-top: 132px;
+    }
+}
+
+@media (max-width: 680px) {
+    .home-hero {
+        padding-top: 122px;
+    }
+
+    .home-hero .hero-visual {
+        order: -1;
+        width: 100%;
+        max-width: 350px;
+        margin-bottom: 4px;
+    }
+
+    .home-hero h1 {
+        margin-top: 10px;
+    }
+
+    .page-hero-brand {
+        margin-top: 118px;
+    }
+}

@@ -22,7 +22,18 @@ $phone   = clean_field('phone', 20);
 $service = clean_field('service', 100);
 $message = clean_field('message', 2000, false);
 
-if ($name === '' || !$email || $phone === '' || $message === '') {
+$allowedServices = [
+    'Website Development',
+    'Google Maps & Local Visibility',
+    '360 Photography & Virtual Tours',
+    'NFC Review Cards & Business Cards',
+    'Digital Marketing & Content Creation',
+    'Google SEO',
+];
+$phoneValid = preg_match('/^\+?[0-9 ]{10,15}$/', $phone) === 1;
+$serviceValid = in_array($service, $allowedServices, true);
+
+if ($name === '' || !$email || !$phoneValid || !$serviceValid || $message === '') {
     http_response_code(400);
     echo "Please complete all required fields.";
     exit;
@@ -43,10 +54,15 @@ $headers .= "Reply-To: " . $email . "\r\n";
 
 $mailed = @mail($to, $subject, $body, $headers);
 
-// Keep a backup copy of every enquiry. Direct web access to this file is blocked by .htaccess.
+// Backup copy of every enquiry. The .php extension and exit guard keep it unreadable over the web on any PHP host.
 $logged = false;
-$fp = @fopen(__DIR__ . '/contact_submissions.csv', 'a');
+$logFile = __DIR__ . '/contact_submissions.php';
+$isNewLog = !file_exists($logFile);
+$fp = @fopen($logFile, 'a');
 if ($fp) {
+    if ($isNewLog) {
+        fwrite($fp, "<?php http_response_code(404); exit; ?>\n");
+    }
     $logged = fputcsv($fp, [date('Y-m-d H:i:s'), $name, $email, $phone, $service, $message, $mailed ? 'emailed' : 'email failed']) !== false;
     fclose($fp);
 }
