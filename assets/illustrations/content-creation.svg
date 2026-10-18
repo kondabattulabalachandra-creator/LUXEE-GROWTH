@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Layered social media post cards with a pen nib, chat and like bubbles">
+<title>Layered social media post cards with a pen nib, chat and like bubbles</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1c17"/><stop offset="1" stop-color="#0c0b0a"/></linearGradient>
+<linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="600"><stop offset="0" stop-color="#f4e8c8"/><stop offset=".45" stop-color="#d2b980"/><stop offset="1" stop-color="#8d6f44"/></linearGradient>
+<linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1e2bb"/><stop offset="1" stop-color="#9c7b4b"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2eee6" stop-opacity=".1"/><stop offset="1" stop-color="#f2eee6" stop-opacity=".02"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2620"/><stop offset="1" stop-color="#0e0d0c"/></linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="#d9c08a" stop-opacity=".42"/><stop offset=".55" stop-color="#c9b17d" stop-opacity=".1"/><stop offset="1" stop-color="#c9b17d" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#f2eee6" fill-opacity=".07"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity=".55"/></filter>
+</defs>
+<style>
+.g{fill:none;stroke:url(#gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.t{stroke-width:1.2;opacity:.5}
+.p{fill:url(#glass);stroke:url(#gold);stroke-opacity:.6;stroke-width:1.4}
+.d{fill:#141310;stroke:url(#gold);stroke-opacity:.7;stroke-width:1.4}
+.gf{fill:url(#gold)}
+.i{fill:#f2eee6}
+.sp{fill:#f1e2bb}
+.serif{font-family:"Playfair Display",Georgia,"Times New Roman",serif;fill:url(#gold)}
+.float{animation:float 6s ease-in-out infinite}
+.float2{animation:float 7s ease-in-out -2.5s infinite}
+.spin{transform-box:view-box;animation:spin 60s linear infinite}
+.spinr{transform-box:view-box;animation:spin 90s linear reverse infinite}
+.twinkle{transform-box:fill-box;transform-origin:center;animation:twinkle 3.2s ease-in-out infinite}
+.twinkle:nth-of-type(2n){animation-delay:-1.4s}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.8s ease-out infinite}
+.pulse.b{animation-delay:-.9s}.pulse.c{animation-delay:-1.8s}
+.draw{stroke-dasharray:1400;stroke-dashoffset:0;animation:draw 3.2s cubic-bezier(.2,.7,.2,1) .4s backwards}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes pulse{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.25)}}
+@keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="800" height="600" fill="url(#bg)"/>
+<rect width="800" height="600" fill="url(#dots)"/>
+<circle cx="420" cy="280" r="320" fill="url(#glow)" opacity="1"/>
+
+<rect x="250" y="120" width="240" height="320" rx="18" class="p" transform="rotate(-9 370 280)"/>
+<rect x="300" y="110" width="240" height="320" rx="18" class="p" transform="rotate(7 420 270)"/>
+<g filter="url(#shadow)"><rect x="280" y="100" width="240" height="340" rx="18" class="d"/></g>
+<rect x="296" y="116" width="208" height="176" rx="10" fill="#0f0e0d" stroke="url(#gold)" stroke-opacity=".3"/>
+<circle cx="458" cy="160" r="20" class="gf" opacity=".85"/>
+<path d="M296 292 L360 214 L408 258 L446 222 L504 292 Z" fill="url(#goldV)" fill-opacity=".28" stroke="url(#gold)" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="400" cy="206" r="26" fill="#10100f" fill-opacity=".75" stroke="url(#gold)" stroke-width="1.6"/>
+<path d="M392 194 L412 206 L392 218 Z" class="gf"/>
+<circle cx="312" cy="318" r="14" class="gf" opacity=".85"/>
+<rect x="334" y="310" width="90" height="7" rx="3.5" class="i" opacity=".8"/><rect x="334" y="323" width="60" height="5" rx="2.5" class="i" opacity=".35"/>
+<rect x="298" y="350" width="200" height="5" rx="2.5" class="i" opacity=".28"/><rect x="298" y="362" width="170" height="5" rx="2.5" class="i" opacity=".28"/>
+<path d="M310 404 c-6 -8 -18 -2 -12 8 l12 10 l12 -10 c6 -10 -6 -16 -12 -8z" class="gf"/>
+<path d="M352 396 h24 a6 6 0 0 1 6 6 v12 a6 6 0 0 1 -6 6 h-14 l-8 6 v-6 h-2 a6 6 0 0 1 -6 -6 v-12 a6 6 0 0 1 6 -6z" class="g" stroke-width="1.6"/>
+<path d="M480 400 l12 12 l-12 12" class="g" stroke-width="1.8"/>
+<g class="float">
+<g filter="url(#shadow)"><path d="M590 160 h120 a18 18 0 0 1 18 18 v50 a18 18 0 0 1 -18 18 h-84 l-24 20 v-20 h-12 a18 18 0 0 1 -18 -18 v-50 a18 18 0 0 1 18 -18z" class="d"/></g>
+<circle cx="622" cy="203" r="7" class="gf"/><circle cx="650" cy="203" r="7" class="gf" opacity=".7"/><circle cx="678" cy="203" r="7" class="gf" opacity=".4"/>
+</g>
+<g class="float2">
+<circle cx="632" cy="386" r="40" class="gf" filter="url(#shadow)"/>
+<path d="M632 404 l-18 -16 c-10 -10 0 -26 12 -18 l6 5 l6 -5 c12 -8 22 8 12 18z" fill="#141310"/>
+</g>
+<g transform="rotate(-30 160 330)"><g class="float2">
+<path d="M160 230 L190 300 L160 420 L130 300 Z" fill="url(#goldV)" fill-opacity=".25" stroke="url(#gold)" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M160 300 V380" class="g" stroke-width="1.6"/><circle cx="160" cy="300" r="7" class="g" stroke-width="1.6"/>
+<rect x="138" y="420" width="44" height="18" rx="4" class="gf"/>
+</g></g>
+<path class="sp twinkle" d="M560 78 Q560 90 572 90 Q560 90 560 102 Q560 90 548 90 Q560 90 560 78Z"/><path class="sp twinkle" d="M220 122 Q220 130 228 130 Q220 130 220 138 Q220 130 212 130 Q220 130 220 122Z"/><path class="sp twinkle" d="M700 491 Q700 500 709 500 Q700 500 700 509 Q700 500 691 500 Q700 500 700 491Z"/>
+
+</svg>

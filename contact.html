@@ -16,9 +16,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
+    <script>
+        try {
+            if (sessionStorage.getItem("luxee-intro-seen") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                document.documentElement.classList.add("intro-off");
+            } else {
+                document.documentElement.classList.add("intro-on");
+            }
+        } catch (error) {
+            document.documentElement.classList.add("intro-off");
+        }
+    </script>
 </head>
 
 <body id="top" data-page="contact">
+    <div class="intro" id="intro-screen" aria-hidden="true">
+        <span class="intro-bar intro-bar-top"></span>
+        <span class="intro-bar intro-bar-bottom"></span>
+        <span class="intro-glow"></span>
+        <span class="intro-dust"></span>
+        <div class="intro-logo">
+            <img src="luxeegrowthlogo.jpeg" alt="" width="1280" height="720">
+            <span class="intro-sweep"></span>
+        </div>
+        <span class="intro-line"></span>
+        <button class="intro-skip" type="button" tabindex="-1">Skip intro</button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo" aria-label="LUXEE GROWTH home">
@@ -41,8 +65,8 @@
     <main>
         <section class="page-hero contact-hero">
             <div class="page-hero-image">
-                <img src="assets/images/brand-strategy.webp" alt="Business team sharing ideas around a table"
-                    fetchpriority="high">
+                <img src="assets/illustrations/contact-hero.svg"
+                    alt="Envelope, chat bubble, paper plane and phone in gold line art" fetchpriority="high">
             </div>
             <div class="page-hero-shade"></div>
             <div class="container page-hero-content reveal">
@@ -179,6 +203,7 @@
         <div class="container footer-bottom"><span>© 2026 LUXEE GROWTH. All rights reserved.</span><span>Kompally,
                 Hyderabad, Telangana</span><a href="index.html">Back to home ↑</a></div>
     </footer>
+    <a class="back-to-top" href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
 </body>
 
 </html>

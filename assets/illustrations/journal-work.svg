@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="A modern desk with a monitor showing a rising chart">
+<title>A modern desk with a monitor showing a rising chart</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1c17"/><stop offset="1" stop-color="#0c0b0a"/></linearGradient>
+<linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="600" y2="600"><stop offset="0" stop-color="#f4e8c8"/><stop offset=".45" stop-color="#d2b980"/><stop offset="1" stop-color="#8d6f44"/></linearGradient>
+<linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1e2bb"/><stop offset="1" stop-color="#9c7b4b"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2eee6" stop-opacity=".1"/><stop offset="1" stop-color="#f2eee6" stop-opacity=".02"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2620"/><stop offset="1" stop-color="#0e0d0c"/></linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="#d9c08a" stop-opacity=".42"/><stop offset=".55" stop-color="#c9b17d" stop-opacity=".1"/><stop offset="1" stop-color="#c9b17d" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#f2eee6" fill-opacity=".07"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity=".55"/></filter>
+</defs>
+<style>
+.g{fill:none;stroke:url(#gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.t{stroke-width:1.2;opacity:.5}
+.p{fill:url(#glass);stroke:url(#gold);stroke-opacity:.6;stroke-width:1.4}
+.d{fill:#141310;stroke:url(#gold);stroke-opacity:.7;stroke-width:1.4}
+.gf{fill:url(#gold)}
+.i{fill:#f2eee6}
+.sp{fill:#f1e2bb}
+.serif{font-family:"Playfair Display",Georgia,"Times New Roman",serif;fill:url(#gold)}
+.float{animation:float 6s ease-in-out infinite}
+.float2{animation:float 7s ease-in-out -2.5s infinite}
+.spin{transform-box:view-box;animation:spin 60s linear infinite}
+.spinr{transform-box:view-box;animation:spin 90s linear reverse infinite}
+.twinkle{transform-box:fill-box;transform-origin:center;animation:twinkle 3.2s ease-in-out infinite}
+.twinkle:nth-of-type(2n){animation-delay:-1.4s}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.8s ease-out infinite}
+.pulse.b{animation-delay:-.9s}.pulse.c{animation-delay:-1.8s}
+.draw{stroke-dasharray:1400;stroke-dashoffset:0;animation:draw 3.2s cubic-bezier(.2,.7,.2,1) .4s backwards}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes pulse{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.25)}}
+@keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="600" height="600" fill="url(#bg)"/>
+<rect width="600" height="600" fill="url(#dots)"/>
+<circle cx="300" cy="280" r="280" fill="url(#glow)" opacity="1"/>
+
+<g filter="url(#shadow)"><rect x="150" y="170" width="300" height="190" rx="14" class="d"/></g>
+<rect x="166" y="186" width="268" height="158" rx="6" fill="#0f0e0d"/>
+<path class="g draw" stroke-width="2.6" d="M186 320 L240 290 L280 300 L330 250 L370 260 L414 210"/>
+<rect x="186" y="204" width="90" height="8" rx="4" class="i" opacity=".7"/>
+<path d="M300 360 V410 M250 410 H350" class="g"/>
+<path d="M110 430 H490" class="g"/>
+<path d="M440 430 V330 L470 300 M455 300 h30 l-8 -26 h-14 z" class="g"/>
+<rect x="150" y="410" width="60" height="20" rx="4" class="gf" opacity=".8"/>
+<path class="sp twinkle" d="M120 130 Q120 140 130 140 Q120 140 120 150 Q120 140 110 140 Q120 140 120 130Z"/><path class="sp twinkle" d="M500 163 Q500 170 507 170 Q500 170 500 177 Q500 170 493 170 Q500 170 500 163Z"/>
+
+</svg>

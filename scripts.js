@@ -60,20 +60,111 @@ document.addEventListener("DOMContentLoaded", () => {
         revealItems.forEach(item => revealObserver.observe(item));
     }
 
-    const heroImage = document.querySelector(".home-hero .hero-image");
-    if (heroImage && !reducedMotion && window.matchMedia("(min-width: 961px)").matches) {
-        let parallaxFrame = 0;
-        window.addEventListener("scroll", () => {
-            if (parallaxFrame) {
-                return;
+    const intro = document.getElementById("intro-screen");
+    if (intro) {
+        const root = document.documentElement;
+        const finishIntro = () => {
+            try {
+                sessionStorage.setItem("luxee-intro-seen", "1");
+            } catch (error) {
+                // Storage can be unavailable in private browsing; the intro simply plays again.
             }
+            window.setTimeout(() => {
+                intro.remove();
+                root.classList.remove("intro-on");
+                root.classList.add("intro-off");
+            }, 700);
+        };
 
-            parallaxFrame = window.requestAnimationFrame(() => {
-                const heroBottom = document.querySelector(".home-hero").getBoundingClientRect().bottom;
-                heroImage.style.setProperty("--hero-shift", `${Math.min(0, heroBottom) * -0.025}px`);
-                parallaxFrame = 0;
+        if (root.classList.contains("intro-on")) {
+            const skipIntro = () => {
+                intro.classList.add("intro-leave");
+                root.classList.remove("intro-on");
+                finishIntro();
+            };
+            intro.addEventListener("click", skipIntro, { once: true });
+            document.addEventListener("keydown", skipIntro, { once: true });
+            intro.addEventListener("animationend", event => {
+                if (event.target === intro && event.animationName === "intro-out") {
+                    finishIntro();
+                }
             });
-        }, { passive: true });
+        } else {
+            intro.remove();
+        }
+    }
+
+    const navbar = document.querySelector(".navbar");
+    const progress = document.querySelector(".scroll-progress");
+    const backToTop = document.querySelector(".back-to-top");
+    let scrollFrame = 0;
+    const onScroll = () => {
+        scrollFrame = 0;
+        const scrollTop = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        if (progress) {
+            progress.style.setProperty("--progress", maxScroll > 0 ? (scrollTop / maxScroll).toFixed(4) : "0");
+        }
+        if (navbar) {
+            navbar.classList.toggle("is-scrolled", scrollTop > 40);
+        }
+        if (backToTop) {
+            backToTop.classList.toggle("is-visible", scrollTop > window.innerHeight * 0.8);
+        }
+    };
+    window.addEventListener("scroll", () => {
+        if (!scrollFrame) {
+            scrollFrame = window.requestAnimationFrame(onScroll);
+        }
+    }, { passive: true });
+    onScroll();
+
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    const heroVisual = document.getElementById("hero-visual");
+    if (heroVisual && finePointer && !reducedMotion) {
+        const layers = heroVisual.querySelectorAll("[data-depth]");
+        const hero = document.querySelector(".home-hero");
+        hero.addEventListener("pointermove", event => {
+            const rect = hero.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - 0.5;
+            const y = (event.clientY - rect.top) / rect.height - 0.5;
+            layers.forEach(layer => {
+                const depth = Number(layer.dataset.depth) || 1;
+                layer.style.setProperty("--px", `${(x * depth * 18).toFixed(1)}px`);
+                layer.style.setProperty("--py", `${(y * depth * 18).toFixed(1)}px`);
+            });
+        });
+        hero.addEventListener("pointerleave", () => {
+            layers.forEach(layer => {
+                layer.style.setProperty("--px", "0px");
+                layer.style.setProperty("--py", "0px");
+            });
+        });
+    }
+
+    if (finePointer) {
+        document.querySelectorAll(".feature-card, .journal-grid a, .service-detail").forEach(card => {
+            const canTilt = !reducedMotion && !card.classList.contains("service-detail");
+            if (canTilt) {
+                card.dataset.tilt = "";
+            }
+            card.addEventListener("pointermove", event => {
+                const rect = card.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width;
+                const y = (event.clientY - rect.top) / rect.height;
+                card.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
+                card.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
+                if (canTilt) {
+                    card.style.setProperty("--rx", `${((0.5 - y) * 7).toFixed(2)}deg`);
+                    card.style.setProperty("--ry", `${((x - 0.5) * 9).toFixed(2)}deg`);
+                }
+            });
+            card.addEventListener("pointerleave", () => {
+                card.style.setProperty("--rx", "0deg");
+                card.style.setProperty("--ry", "0deg");
+            });
+        });
     }
 
     const contactForm = document.getElementById("contactForm");

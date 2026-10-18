@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="A sequence of golden arches forming a clear path forward">
+<title>A sequence of golden arches forming a clear path forward</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1c17"/><stop offset="1" stop-color="#0c0b0a"/></linearGradient>
+<linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="600" y2="800"><stop offset="0" stop-color="#f4e8c8"/><stop offset=".45" stop-color="#d2b980"/><stop offset="1" stop-color="#8d6f44"/></linearGradient>
+<linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1e2bb"/><stop offset="1" stop-color="#9c7b4b"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2eee6" stop-opacity=".1"/><stop offset="1" stop-color="#f2eee6" stop-opacity=".02"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2620"/><stop offset="1" stop-color="#0e0d0c"/></linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="#d9c08a" stop-opacity=".42"/><stop offset=".55" stop-color="#c9b17d" stop-opacity=".1"/><stop offset="1" stop-color="#c9b17d" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#f2eee6" fill-opacity=".07"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity=".55"/></filter>
+</defs>
+<style>
+.g{fill:none;stroke:url(#gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.t{stroke-width:1.2;opacity:.5}
+.p{fill:url(#glass);stroke:url(#gold);stroke-opacity:.6;stroke-width:1.4}
+.d{fill:#141310;stroke:url(#gold);stroke-opacity:.7;stroke-width:1.4}
+.gf{fill:url(#gold)}
+.i{fill:#f2eee6}
+.sp{fill:#f1e2bb}
+.serif{font-family:"Playfair Display",Georgia,"Times New Roman",serif;fill:url(#gold)}
+.float{animation:float 6s ease-in-out infinite}
+.float2{animation:float 7s ease-in-out -2.5s infinite}
+.spin{transform-box:view-box;animation:spin 60s linear infinite}
+.spinr{transform-box:view-box;animation:spin 90s linear reverse infinite}
+.twinkle{transform-box:fill-box;transform-origin:center;animation:twinkle 3.2s ease-in-out infinite}
+.twinkle:nth-of-type(2n){animation-delay:-1.4s}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.8s ease-out infinite}
+.pulse.b{animation-delay:-.9s}.pulse.c{animation-delay:-1.8s}
+.draw{stroke-dasharray:1400;stroke-dashoffset:0;animation:draw 3.2s cubic-bezier(.2,.7,.2,1) .4s backwards}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes pulse{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.25)}}
+@keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="600" height="800" fill="url(#bg)"/>
+<rect width="600" height="800" fill="url(#dots)"/>
+<circle cx="300" cy="450" r="330" fill="url(#glow)" opacity="1"/>
+
+<circle cx="300" cy="440" r="70" fill="url(#glow)"/>
+<circle cx="300" cy="450" r="30" fill="#f4e8c8" opacity=".55"/>
+<path d="M80.0 720 V470.0 A220.0 220.0 0 0 1 520.0 470.0 V720" class="g" opacity="1.00" stroke-width="2.60"/><path d="M130.0 630 V470.0 A170.0 170.0 0 0 1 470.0 470.0 V630" class="g" opacity="0.84" stroke-width="2.25"/><path d="M170.0 566 V465.0 A130.0 130.0 0 0 1 430.0 465.0 V566" class="g" opacity="0.68" stroke-width="1.90"/><path d="M205.0 520 V457.0 A95.0 95.0 0 0 1 395.0 457.0 V520" class="g" opacity="0.52" stroke-width="1.55"/><path d="M235.0 488 V447.0 A65.0 65.0 0 0 1 365.0 447.0 V488" class="g" opacity="0.36" stroke-width="1.20"/>
+<path d="M80 720 L235 488 M520 720 L365 488" class="g t"/>
+<polygon points="262,800 338,800 306,488 294,488" fill="url(#goldV)" fill-opacity=".45"/>
+<path d="M140 800 L250 560 M460 800 L350 560" class="g t" opacity=".3"/>
+<path class="sp twinkle" d="M470 167 Q470 180 483 180 Q470 180 470 193 Q470 180 457 180 Q470 180 470 167Z"/><path class="sp twinkle" d="M130 252 Q130 260 138 260 Q130 260 130 268 Q130 260 122 260 Q130 260 130 252Z"/><path class="sp twinkle" d="M300 134 Q300 140 306 140 Q300 140 300 146 Q300 140 294 140 Q300 140 300 134Z"/>
+
+</svg>

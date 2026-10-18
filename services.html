@@ -16,9 +16,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
+    <script>
+        try {
+            if (sessionStorage.getItem("luxee-intro-seen") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                document.documentElement.classList.add("intro-off");
+            } else {
+                document.documentElement.classList.add("intro-on");
+            }
+        } catch (error) {
+            document.documentElement.classList.add("intro-off");
+        }
+    </script>
 </head>
 
 <body id="top" data-page="services">
+    <div class="intro" id="intro-screen" aria-hidden="true">
+        <span class="intro-bar intro-bar-top"></span>
+        <span class="intro-bar intro-bar-bottom"></span>
+        <span class="intro-glow"></span>
+        <span class="intro-dust"></span>
+        <div class="intro-logo">
+            <img src="luxeegrowthlogo.jpeg" alt="" width="1280" height="720">
+            <span class="intro-sweep"></span>
+        </div>
+        <span class="intro-line"></span>
+        <button class="intro-skip" type="button" tabindex="-1">Skip intro</button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="brand-logo" aria-label="LUXEE GROWTH home">
@@ -41,8 +65,8 @@
     <main>
         <section class="page-hero services-hero">
             <div class="page-hero-image">
-                <img src="assets/images/brand-strategy.webp" alt="Colleagues reviewing work around a table"
-                    fetchpriority="high">
+                <img src="assets/illustrations/services-hero.svg"
+                    alt="Golden crown at the centre of an orbit of six digital service icons" fetchpriority="high">
             </div>
             <div class="page-hero-shade"></div>
             <div class="container page-hero-content reveal">
@@ -67,8 +91,8 @@
                 <div class="service-detail-list">
                     <article class="service-detail reveal" id="local-search">
                         <div class="service-detail-image">
-                            <img src="assets/images/instagram-space.webp"
-                                alt="Welcoming local business interior with warm lighting" loading="lazy">
+                            <img src="assets/illustrations/local-search.svg"
+                                alt="Gold map pin above a stylised city map with a five-star review card" loading="lazy">
                             <span>01 / Be easier to find</span>
                         </div>
                         <div class="service-detail-copy">
@@ -90,8 +114,8 @@
 
                     <article class="service-detail service-detail-reverse reveal" id="virtual-tours">
                         <div class="service-detail-image">
-                            <img src="assets/images/tour-interior.webp"
-                                alt="Bright contemporary home interior with open living and dining space" loading="lazy">
+                            <img src="assets/illustrations/virtual-tour.svg"
+                                alt="An elegant arched interior wrapped by a 360 degree orbit" loading="lazy">
                             <span>02 / Let them look around</span>
                         </div>
                         <div class="service-detail-copy">
@@ -112,8 +136,8 @@
 
                     <article class="service-detail reveal" id="nfc-cards">
                         <div class="service-detail-image">
-                            <img src="assets/images/nfc-digital.webp"
-                                alt="Digital devices arranged neatly on a light surface" loading="lazy">
+                            <img src="assets/illustrations/nfc-cards.svg"
+                                alt="Premium black and gold NFC card tapping a smartphone" loading="lazy">
                             <span>03 / Make connection simple</span>
                         </div>
                         <div class="service-detail-copy">
@@ -135,8 +159,8 @@
 
                     <article class="service-detail service-detail-reverse reveal" id="content">
                         <div class="service-detail-image">
-                            <img src="assets/images/content-creation.webp"
-                                alt="Creative planning and design work in progress" loading="lazy">
+                            <img src="assets/illustrations/content-creation.svg"
+                                alt="Layered social post cards with pen nib, chat and like bubbles" loading="lazy">
                             <span>04 / Find the right words</span>
                         </div>
                         <div class="service-detail-copy">
@@ -157,7 +181,7 @@
 
                     <article class="service-detail reveal" id="web-design">
                         <div class="service-detail-image">
-                            <img src="assets/images/web-design.webp" alt="Laptop displaying a website design project"
+                            <img src="assets/illustrations/web-design.svg" alt="Laptop and phone showing a premium website design"
                                 loading="lazy">
                             <span>05 / Give your business a home online</span>
                         </div>
@@ -179,8 +203,8 @@
 
                     <article class="service-detail service-detail-reverse reveal" id="search">
                         <div class="service-detail-image">
-                            <img src="assets/images/search-analytics.webp"
-                                alt="Website analytics displayed on a laptop screen" loading="lazy">
+                            <img src="assets/illustrations/seo-analytics.svg"
+                                alt="Rising bar chart and growth line inspected by a gold magnifying glass" loading="lazy">
                             <span>06 / Build a stronger foundation</span>
                         </div>
                         <div class="service-detail-copy">
@@ -208,11 +232,11 @@
                     <h2>Understand. Agree.<br><em>Move with purpose.</em></h2>
                 </div>
                 <div class="process-steps">
-                    <article class="process-step reveal"><span>01</span><h3>We listen</h3><p>We learn about your
+                    <article class="process-step reveal"><i class="fa-solid fa-ear-listen" aria-hidden="true"></i><span>01</span><h3>We listen</h3><p>We learn about your
                         goals, audience and what is getting in the way.</p></article>
-                    <article class="process-step reveal"><span>02</span><h3>We scope</h3><p>We agree on useful
+                    <article class="process-step reveal"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i><span>02</span><h3>We scope</h3><p>We agree on useful
                         priorities, deliverables and a practical plan.</p></article>
-                    <article class="process-step reveal"><span>03</span><h3>We deliver</h3><p>We keep communication
+                    <article class="process-step reveal"><i class="fa-solid fa-gem" aria-hidden="true"></i><span>03</span><h3>We deliver</h3><p>We keep communication
                         clear as the work takes shape and moves forward.</p></article>
                 </div>
             </div>
@@ -248,6 +272,7 @@
         <div class="container footer-bottom"><span>© 2026 LUXEE GROWTH. All rights reserved.</span><span>Kompally,
                 Hyderabad, Telangana</span><a href="index.html">Back to home ↑</a></div>
     </footer>
+    <a class="back-to-top" href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
 </body>
 
 </html>

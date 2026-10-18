@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Envelope, chat bubble, paper plane and phone in gold line art">
+<title>Envelope, chat bubble, paper plane and phone in gold line art</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1c17"/><stop offset="1" stop-color="#0c0b0a"/></linearGradient>
+<linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1600" y2="900"><stop offset="0" stop-color="#f4e8c8"/><stop offset=".45" stop-color="#d2b980"/><stop offset="1" stop-color="#8d6f44"/></linearGradient>
+<linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1e2bb"/><stop offset="1" stop-color="#9c7b4b"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2eee6" stop-opacity=".1"/><stop offset="1" stop-color="#f2eee6" stop-opacity=".02"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2620"/><stop offset="1" stop-color="#0e0d0c"/></linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="#d9c08a" stop-opacity=".42"/><stop offset=".55" stop-color="#c9b17d" stop-opacity=".1"/><stop offset="1" stop-color="#c9b17d" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#f2eee6" fill-opacity=".07"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity=".55"/></filter>
+</defs>
+<style>
+.g{fill:none;stroke:url(#gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.t{stroke-width:1.2;opacity:.5}
+.p{fill:url(#glass);stroke:url(#gold);stroke-opacity:.6;stroke-width:1.4}
+.d{fill:#141310;stroke:url(#gold);stroke-opacity:.7;stroke-width:1.4}
+.gf{fill:url(#gold)}
+.i{fill:#f2eee6}
+.sp{fill:#f1e2bb}
+.serif{font-family:"Playfair Display",Georgia,"Times New Roman",serif;fill:url(#gold)}
+.float{animation:float 6s ease-in-out infinite}
+.float2{animation:float 7s ease-in-out -2.5s infinite}
+.spin{transform-box:view-box;animation:spin 60s linear infinite}
+.spinr{transform-box:view-box;animation:spin 90s linear reverse infinite}
+.twinkle{transform-box:fill-box;transform-origin:center;animation:twinkle 3.2s ease-in-out infinite}
+.twinkle:nth-of-type(2n){animation-delay:-1.4s}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.8s ease-out infinite}
+.pulse.b{animation-delay:-.9s}.pulse.c{animation-delay:-1.8s}
+.draw{stroke-dasharray:1400;stroke-dashoffset:0;animation:draw 3.2s cubic-bezier(.2,.7,.2,1) .4s backwards}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes pulse{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.25)}}
+@keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<circle cx="1180" cy="460" r="470" fill="url(#glow)" opacity="1"/>
+
+<path d="M760 700 C 900 640, 900 520, 1020 500 S 1160 420, 1250 300" class="g t" stroke-dasharray="6 12" stroke-width="2"/>
+<g class="float">
+<g filter="url(#shadow)"><rect x="1000" y="430" width="380" height="250" rx="22" class="d"/></g>
+<path d="M1000 452 L1190 580 L1380 452" class="g" stroke-width="2.4"/>
+<path d="M1000 680 L1140 548 M1380 680 L1240 548" class="g t"/>
+<circle cx="1190" cy="580" r="20" class="gf"/>
+<text x="1190" y="589" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#141310" font-weight="700">L</text>
+</g>
+<g class="float2">
+<path d="M1250 300 L1440 220 L1360 400 L1320 330 Z" fill="url(#goldV)" fill-opacity=".35" stroke="url(#gold)" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M1320 330 L1440 220" class="g" stroke-width="2"/>
+</g>
+<g class="float2">
+<g filter="url(#shadow)"><path d="M880 180 h170 a22 22 0 0 1 22 22 v64 a22 22 0 0 1 -22 22 h-120 l-34 28 v-28 h-16 a22 22 0 0 1 -22 -22 v-64 a22 22 0 0 1 22 -22z" class="d"/></g>
+<rect x="890" y="214" width="140" height="9" rx="4.5" class="i" opacity=".7"/><rect x="890" y="234" width="100" height="7" rx="3.5" class="i" opacity=".35"/>
+<rect x="890" y="252" width="60" height="7" rx="3.5" class="gf"/>
+</g>
+<g transform="translate(1460 600)">
+<circle r="46" class="gf" filter="url(#shadow)"/>
+<path d="M-14 -18 c-4 0 -8 4 -6 10 c4 14 14 24 28 28 c6 2 10 -2 10 -6 l-2 -8 l-10 -2 l-4 4 c-6 -3 -10 -8 -12 -12 l4 -4 l-2 -10z" fill="#141310"/>
+<path class="g pulse" d="M28 -40 a40 40 0 0 1 12 28"/>
+</g>
+<path class="sp twinkle" d="M1480 126 Q1480 140 1494 140 Q1480 140 1480 154 Q1480 140 1466 140 Q1480 140 1480 126Z"/><path class="sp twinkle" d="M960 412 Q960 420 968 420 Q960 420 960 428 Q960 420 952 420 Q960 420 960 412Z"/><path class="sp twinkle" d="M1240 750 Q1240 760 1250 760 Q1240 760 1240 770 Q1240 760 1230 760 Q1240 760 1240 750Z"/>
+
+</svg>

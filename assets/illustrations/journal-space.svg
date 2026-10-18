@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Line art lounge chair beneath an arched window">
+<title>Line art lounge chair beneath an arched window</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1c17"/><stop offset="1" stop-color="#0c0b0a"/></linearGradient>
+<linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="600" y2="600"><stop offset="0" stop-color="#f4e8c8"/><stop offset=".45" stop-color="#d2b980"/><stop offset="1" stop-color="#8d6f44"/></linearGradient>
+<linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1e2bb"/><stop offset="1" stop-color="#9c7b4b"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2eee6" stop-opacity=".1"/><stop offset="1" stop-color="#f2eee6" stop-opacity=".02"/></linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2620"/><stop offset="1" stop-color="#0e0d0c"/></linearGradient>
+<radialGradient id="glow"><stop offset="0" stop-color="#d9c08a" stop-opacity=".42"/><stop offset=".55" stop-color="#c9b17d" stop-opacity=".1"/><stop offset="1" stop-color="#c9b17d" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#f2eee6" fill-opacity=".07"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity=".55"/></filter>
+</defs>
+<style>
+.g{fill:none;stroke:url(#gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.t{stroke-width:1.2;opacity:.5}
+.p{fill:url(#glass);stroke:url(#gold);stroke-opacity:.6;stroke-width:1.4}
+.d{fill:#141310;stroke:url(#gold);stroke-opacity:.7;stroke-width:1.4}
+.gf{fill:url(#gold)}
+.i{fill:#f2eee6}
+.sp{fill:#f1e2bb}
+.serif{font-family:"Playfair Display",Georgia,"Times New Roman",serif;fill:url(#gold)}
+.float{animation:float 6s ease-in-out infinite}
+.float2{animation:float 7s ease-in-out -2.5s infinite}
+.spin{transform-box:view-box;animation:spin 60s linear infinite}
+.spinr{transform-box:view-box;animation:spin 90s linear reverse infinite}
+.twinkle{transform-box:fill-box;transform-origin:center;animation:twinkle 3.2s ease-in-out infinite}
+.twinkle:nth-of-type(2n){animation-delay:-1.4s}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.8s ease-out infinite}
+.pulse.b{animation-delay:-.9s}.pulse.c{animation-delay:-1.8s}
+.draw{stroke-dasharray:1400;stroke-dashoffset:0;animation:draw 3.2s cubic-bezier(.2,.7,.2,1) .4s backwards}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes pulse{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.25)}}
+@keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="600" height="600" fill="url(#bg)"/>
+<rect width="600" height="600" fill="url(#dots)"/>
+<circle cx="300" cy="300" r="280" fill="url(#glow)" opacity="1"/>
+
+<path d="M180 470 V260 A120 120 0 0 1 420 260 V470" class="g t"/>
+<path d="M300 140 V470 M180 300 H420" class="g t" opacity=".35"/>
+<path d="M120 470 H480" class="g"/>
+<path d="M210 450 V370 a30 30 0 0 1 30 -30 h80 a30 30 0 0 1 30 30 v80" fill="url(#goldV)" fill-opacity=".25" stroke="url(#gold)" stroke-width="2.2"/>
+<rect x="190" y="390" width="180" height="40" rx="14" class="d"/>
+<path d="M210 430 L200 470 M350 430 L360 470" class="g"/>
+<path d="M430 470 V250 M430 250 l-30 0 l12 -40 h36 l12 40 z" class="g"/>
+<ellipse cx="430" cy="252" rx="40" ry="10" fill="url(#glow)"/>
+<path d="M150 470 c-10 -40 10 -70 0 -110 M150 400 c-20 -10 -30 -30 -30 -50 M150 380 c20 -10 30 -30 34 -54" class="g t"/>
+<path class="sp twinkle" d="M470 120 Q470 130 480 130 Q470 130 470 140 Q470 130 460 130 Q470 130 470 120Z"/>
+
+</svg>
