@@ -273,6 +273,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ].join("\n");
             const whatsappUrl = `https://wa.me/917732018632?text=${encodeURIComponent(message)}`;
 
+            fetch("process_contact.php", { method: "POST", body: formData, keepalive: true }).catch(() => {});
+
             const whatsappWindow = window.open(whatsappUrl, "_blank");
             if (whatsappWindow) {
                 whatsappWindow.opener = null;
