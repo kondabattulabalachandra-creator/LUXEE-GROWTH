@@ -16,32 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
-    <script>
-        try {
-            if (sessionStorage.getItem("luxee-intro-seen") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-                document.documentElement.classList.add("intro-off");
-            } else {
-                document.documentElement.classList.add("intro-on");
-            }
-        } catch (error) {
-            document.documentElement.classList.add("intro-off");
-        }
-    </script>
 </head>
 
 <body id="top" data-page="home">
-    <div class="intro" id="intro-screen" aria-hidden="true">
-        <span class="intro-bar intro-bar-top"></span>
-        <span class="intro-bar intro-bar-bottom"></span>
-        <span class="intro-glow"></span>
-        <span class="intro-dust"></span>
-        <div class="intro-logo">
-            <img src="assets/luxee-logo.png" alt="" width="902" height="679">
-            <span class="intro-sweep"></span>
-        </div>
-        <span class="intro-line"></span>
-        <button class="intro-skip" type="button" tabindex="-1">Skip intro</button>
-    </div>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <header class="navbar">
         <div class="container nav-container">
