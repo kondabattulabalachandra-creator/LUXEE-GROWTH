@@ -40,7 +40,7 @@
             <span class="intro-sweep"></span>
         </div>
         <span class="intro-line"></span>
-        <button class="intro-skip" type="button" tabindex="-1">Skip intro</button>
+        <button class="intro-skip" type="button">Skip intro</button>
     </div>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <header class="navbar">
@@ -165,7 +165,7 @@
                         </div>
                         <div class="field">
                             <i class="fa-solid fa-phone field-icon" aria-hidden="true"></i>
-                            <input type="tel" name="phone" id="phone" autocomplete="tel" placeholder=" " required pattern="[+]?[0-9 ]{10,15}" inputmode="tel"
+                            <input type="tel" name="phone" id="phone" autocomplete="tel" placeholder=" " required pattern="^[+()0-9\s-]{7,20}$" inputmode="tel"
                                 aria-describedby="phone-error">
                             <label for="phone">Phone number</label>
                             <i class="fa-solid fa-circle-check field-ok" aria-hidden="true"></i>
