@@ -60,40 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         revealItems.forEach(item => revealObserver.observe(item));
     }
 
-    const intro = document.getElementById("intro-screen");
-    if (intro) {
-        const root = document.documentElement;
-        const finishIntro = () => {
-            try {
-                sessionStorage.setItem("luxee-intro-seen", "1");
-            } catch (error) {
-                // Storage can be unavailable in private browsing; the intro simply plays again.
-            }
-            window.setTimeout(() => {
-                intro.remove();
-                root.classList.remove("intro-on");
-                root.classList.add("intro-off");
-            }, 700);
-        };
-
-        if (root.classList.contains("intro-on")) {
-            const skipIntro = () => {
-                intro.classList.add("intro-leave");
-                root.classList.remove("intro-on");
-                finishIntro();
-            };
-            intro.addEventListener("click", skipIntro, { once: true });
-            document.addEventListener("keydown", skipIntro, { once: true });
-            intro.addEventListener("animationend", event => {
-                if (event.target === intro && event.animationName === "intro-out") {
-                    finishIntro();
-                }
-            });
-        } else {
-            intro.remove();
-        }
-    }
-
     const navbar = document.querySelector(".navbar");
     const progress = document.querySelector(".scroll-progress");
     const backToTop = document.querySelector(".back-to-top");
