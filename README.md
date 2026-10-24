@@ -28,7 +28,7 @@ There is no framework, package manager, database, CMS, build step, or automated 
 | Images | PNG, JPEG, SVG | Stored under `assets/` or at the repository root. |
 | Icons and fonts | Font Awesome CDN; Google Fonts | External requests to Cloudflare's cdnjs, Google Fonts, and Google Fonts Static. |
 | Hosting | GitHub Pages | Static files from the repository root; no PHP runtime. |
-| Deployment | GitHub Actions | Two identical workflow files currently trigger for the same push. |
+| Deployment | GitHub Actions | A single workflow triggers on pushes to `main` and manual dispatch. |
 | Server-side code | PHP source file present | `process_contact.php` is not executed on Pages; see the security notes. |
 
 There are no `package.json`, lockfiles, TypeScript sources, environment files, install scripts, bundler, or local dependencies to install.
@@ -59,13 +59,18 @@ flowchart TD
 .
 ├── .github/
 │   └── workflows/
-│       ├── static.yml          # Pages deployment workflow
-│       └── static.yaml         # Duplicate workflow; also triggers on main pushes
+│       └── static.yaml         # Pages deployment workflow
 ├── assets/
 │   ├── illustrations/          # Service and studio SVG illustrations
 │   ├── partners/               # Partner logos
-│   └── luxee-logo.png          # Shared logo, favicon, and CSS mask source
+│   └── luxee-logo.png          # Page logo, social image, and CSS mask source
+├── apple-touch-icon.png        # 180 x 180 mobile home-screen icon
 ├── contact.html                # Contact details and enquiry form
+├── favicon-16x16.png           # Small browser/search icon
+├── favicon-32x32.png           # Standard browser icon
+├── favicon-48x48.png           # Large crawler/browser icon
+├── favicon.ico                 # ICO with multiple raster sizes
+├── favicon.svg                 # Scalable gold growth-mark favicon
 ├── index.html                  # Home page
 ├── luxeegrowthlogo.jpeg        # Root-level JPEG; no source references found
 ├── process_contact.php         # PHP handler source; not executed by Pages
@@ -83,7 +88,7 @@ flowchart TD
 
 `assets/illustrations/` contains `content-creation.svg`, `local-search.svg`, `nfc-cards.svg`, `seo-analytics.svg`, `studio-path.svg`, `virtual-tour.svg`, and `web-design.svg`, plus `journal-building.svg`, `journal-mobile.svg`, `journal-space.svg`, and `journal-work.svg`. The `journal-*` illustrations were not referenced by the inspected HTML, CSS, or JavaScript. `assets/partners/` contains `anutex.png`, `apollo-hospitals.svg`, `dtdc.png`, and `jawed-habib.png`; the home page displays them as external links.
 
-The root `luxeegrowthlogo.jpeg` was not referenced by the inspected source. Keep it until you confirm it is no longer needed elsewhere; the active site logo is `assets/luxee-logo.png` (902 x 679 RGBA PNG). No source maps, generated build output, or automated asset pipeline were found.
+The root `luxeegrowthlogo.jpeg` was not referenced by the inspected source. Keep it until you confirm it is no longer needed elsewhere; the active page logo is `assets/luxee-logo.png` (902 x 679 RGBA PNG). The favicon is a separate gold growth-mark set in the repository root. No source maps, generated build output, or automated asset pipeline were found.
 
 ### What is safe to edit?
 
@@ -156,7 +161,9 @@ There is no component framework. Repeated UI is implemented as repeated HTML: `.
 
 ### Logo
 
-The active logo is `assets/luxee-logo.png`; it is used in page headers, the favicon, and CSS masks. Preserve its aspect ratio. If replacing it, keep the filename and dimensions where possible. If the filename changes, update the `<img>` references in all HTML pages, the favicon and social metadata, JSON-LD in `index.html`, and the `mask` / `-webkit-mask` URLs in `styles.css`. Check both the browser tab and page logo afterward.
+The active page logo is `assets/luxee-logo.png`; it is used in page headers, footers, social-preview metadata, JSON-LD, and CSS masks. Preserve its aspect ratio. If replacing it, keep the filename and dimensions where possible. If the filename changes, update the `<img>` references in all HTML pages, social metadata, JSON-LD in `index.html`, and the `mask` / `-webkit-mask` URLs in `styles.css`.
+
+The favicon is separate from the page logo. All three pages reference `/favicon.svg`, `/favicon-16x16.png`, `/favicon-32x32.png`, `/favicon-48x48.png`, `/favicon.ico`, and `/apple-touch-icon.png`. The SVG is the scalable gold growth mark; PNGs cover 16, 32, and 48 px sizes; the ICO contains multiple raster variants; and the Apple touch icon is 180 x 180. Keep the files square, high contrast, and at stable root URLs. When changing the artwork, regenerate all raster/ICO variants from the same source so they remain consistent. The current `robots.txt` allows crawling. Google Search recommends a square icon at least 48 x 48, but display and indexing are controlled by the search engine and are not guaranteed.
 
 ### Images
 
@@ -164,7 +171,7 @@ The active logo is `assets/luxee-logo.png`; it is used in page headers, the favi
 - Prefer compressed SVG for simple vector artwork and optimized PNG/JPEG/WebP for photographs or raster marks. Do not change an extension unless the file format is actually converted.
 - Give meaningful images useful `alt` text; decorative images should use empty `alt=""` when appropriate. Preserve or update intrinsic `width` and `height` attributes to reduce layout shifts.
 - Keep below-the-fold images `loading="lazy"`; do not lazy-load an above-the-fold hero image that is marked `fetchpriority="high"`.
-- Use relative paths like `assets/illustrations/web-design.svg` for page content. Root-relative favicon paths such as `/assets/luxee-logo.png` assume the site's domain root.
+- Use relative paths like `assets/illustrations/web-design.svg` for page content. Root-relative favicon paths such as `/favicon.svg` assume the site's domain root.
 - Check for existing references before deleting an asset. The `journal-*` files and root JPEG were not referenced during this audit.
 
 ## 10. Styling and Design System
@@ -205,7 +212,7 @@ Other external links include `tel:`, `mailto:`, WhatsApp, Instagram, and partner
 
 ## 12. SEO and Performance
 
-Current source includes unique titles and meta descriptions, canonical URLs using `https://www.luxeegrowth.in`, Open Graph fields, a Twitter summary card, a favicon, `robots.txt`, a three-page sitemap, and `ProfessionalService` JSON-LD on the home page. Keep the page title, description, canonical, Open Graph title/description/URL, and visible page content aligned when editing. Do not add fake reviews, locations, awards, or ranking promises to structured data.
+Current source includes unique titles and meta descriptions, canonical URLs using `https://www.luxeegrowth.in`, Open Graph fields, a Twitter summary card, SVG/PNG/ICO favicons and an Apple touch icon, `robots.txt`, a three-page sitemap, and `ProfessionalService` JSON-LD on the home page. Keep the page title, description, canonical, Open Graph title/description/URL, and visible page content aligned when editing. Do not add fake reviews, locations, awards, or ranking promises to structured data.
 
 For a new page, add one self-canonical URL and its sitemap entry; make sure the page is reachable through a descriptive internal link. After deployment, verify the public HTML and submit the sitemap in Google Search Console if the site owner has access. No Search Console ownership, analytics, or indexation status was verified during this audit. A sitemap helps discovery but does not guarantee indexing or rank.
 
@@ -287,7 +294,7 @@ python3 -c 'import xml.etree.ElementTree as ET; ET.parse("sitemap.xml"); print("
 
 ### Deployment behavior
 
-GitHub Pages is configured through the repository's Pages settings to publish from a GitHub Actions workflow, source branch `main`, repository root. Both `.github/workflows/static.yml` and `.github/workflows/static.yaml` currently contain the same workflow and both trigger on pushes to `main` and manual dispatch. This can create duplicate deployments for a single push; inspect the Actions page for runs rather than assuming only one run exists. No tests or build/transformation run before upload.
+GitHub Pages is configured through the repository's Pages settings to publish from the `.github/workflows/static.yaml` workflow, source branch `main`, repository root. It triggers on pushes to `main` and manual dispatch. No tests or build/transformation run before upload.
 
 The workflow checks out the repository, configures Pages, uploads `.` as the artifact, and deploys it. The `.htaccess` file is not an active Pages configuration. The PHP file is uploaded like any other file.
 
@@ -370,7 +377,7 @@ No environment variables are required by the static site. If a future backend re
 | `php -l` is unavailable | PHP CLI is not installed | Run `php --version`. | PHP is optional for the static site. Skip lint or use a trusted PHP-capable environment; linting still doesn't enable PHP on Pages. |
 | Git push rejected | Remote contains commits not present locally, or authentication/branch issue | `git status --short`; `git fetch origin`; `git log --oneline --graph --decorate --all -12`. | Integrate remote changes intentionally; authenticate with GitHub; avoid force-pushing `main`. Verify `git status` and push again. |
 | Pages workflow failed | Workflow permissions, Pages configuration, or artifact/deploy step failed | Check **Actions** run details or `gh run view <RUN_ID> --log-failed`. | Fix the failed step's cause, push a new commit, and verify a later run succeeds. There is no build/test command to repair. |
-| Two Pages runs appear for one push | Both identical workflow files trigger on `main` | Inspect `.github/workflows/static.yml` and `static.yaml`. | Confirm at least one successful deployment. Recommended maintenance: retain one workflow file after reviewing repository history/settings. |
+| Pages deployment does not start | Workflow file is missing/invalid or the push did not target `main` | Inspect `.github/workflows/static.yaml` and the Actions tab. | Push to `main` or start the workflow manually from Actions; fix any workflow syntax or repository Pages configuration errors. |
 | Live page is stale | Workflow still running or CDN/browser cache | Check Actions status and use `curl -fsSL` against the live URL. | Wait for successful deployment and cache propagation; hard-refresh or use a private window. |
 | Custom domain/HTTPS error | DNS or Pages domain settings mismatch, or certificate provisioning delay | Inspect Pages settings; use `dig` if available and `curl -sSI https://www.luxeegrowth.in/`. | Correct DNS at the domain provider to match current GitHub Pages guidance; do not guess record values. Confirm Pages reports HTTPS enabled. |
 | Layout overflows on mobile | Breakpoint override, long text, or fixed width | Use browser responsive mode at narrow widths; inspect computed styles and the relevant `@media` blocks. | Fix the responsible selector in `styles.css`; retest at approximately 480, 680, 960, and desktop widths. |
@@ -406,7 +413,7 @@ If GitHub Pages is unavailable, the tracked HTML/CSS/JS/assets can be served by 
 - [ ] Run `node --check scripts.js`, PHP lint if applicable, sitemap XML parse, and `git diff --check`.
 - [ ] Review the staged diff before every commit; do not commit enquiry logs or secrets.
 - [ ] Verify GitHub Actions and live HTTP responses after pushes to `main`.
-- [ ] Revisit the duplicate workflow files and the publicly served PHP source as high-priority technical debt.
+- [ ] Review the remaining Pages workflow and the publicly served PHP source as high-priority technical debt.
 - [ ] Periodically check external font/icon availability, partner links, accessibility, and real-user performance metrics.
 
 ## 20. Known Issues and Technical Debt
@@ -414,7 +421,7 @@ If GitHub Pages is unavailable, the tracked HTML/CSS/JS/assets can be served by 
 Confirmed by source/configuration or live checks:
 
 - GitHub Pages does not execute the PHP contact handler; the live endpoint returns its source. The WhatsApp handoff remains the user-visible delivery workflow.
-- Both `.github/workflows/static.yml` and `static.yaml` define the same deployment and trigger, producing duplicate workflow runs.
+- The deployment workflow has no automated build, test, or link-check stage.
 - `.htaccess` is not effective on GitHub Pages.
 - No tests, build, formatter, dependency manifest, link checker, or performance/accessibility CI is configured.
 - `luxeegrowthlogo.jpeg` and four `journal-*` SVGs appear unreferenced by inspected site code.
@@ -423,10 +430,9 @@ Confirmed by source/configuration or live checks:
 Recommendations in priority order:
 
 1. Remove PHP source from the public Pages artifact or move form processing to a secure supported backend; clearly test and monitor the chosen delivery path.
-2. Remove one duplicate workflow after confirming which file is intended to remain.
-3. Add automated HTML/link/accessibility checks if the project grows; keep deployment static unless a backend is intentionally selected.
-4. Set up and verify Google Search Console, then monitor indexing and submit the sitemap. Create/maintain accurate business-profile information and earn genuine local references; do not buy links or publish fabricated reviews.
-5. Measure mobile performance and accessibility before choosing further optimizations.
+2. Add automated HTML/link/accessibility checks if the project grows; keep deployment static unless a backend is intentionally selected.
+3. Set up and verify Google Search Console, then monitor indexing and submit the sitemap. Create/maintain accurate business-profile information and earn genuine local references; do not buy links or publish fabricated reviews.
+4. Measure mobile performance and accessibility before choosing further optimizations.
 
 No ranking position, Search Console indexing state, email delivery, spam resistance, or formal accessibility/performance score was established by this repository audit.
 
