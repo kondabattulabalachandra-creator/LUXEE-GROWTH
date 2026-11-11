@@ -3437,7 +3437,7 @@ h2 em {
         min-width: 0 !important;
         max-width: 100% !important;
         width: 100% !important;
-        margin: 6px 16px 12px;
+        margin: 6px 16px 12px auto;
         padding: 0;
         max-height: 0;
         overflow-x: hidden;
@@ -3449,6 +3449,7 @@ h2 em {
         box-sizing: border-box;
         width: calc(100% - 32px) !important;
         max-width: calc(100% - 32px) !important;
+        margin-left: auto;
     }
 
     .nav-dropdown.is-open .nav-dropdown-menu {
