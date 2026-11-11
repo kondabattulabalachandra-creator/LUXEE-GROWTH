@@ -1350,7 +1350,7 @@ img {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        padding: 0 24px;
+        padding: 0 12px 0 24px;
         overflow-x: hidden;
         border-bottom: 1px solid var(--line-gold);
         background: rgba(16, 16, 15, 0.98);
@@ -3464,7 +3464,6 @@ h2 em {
         max-width: 100% !important;
         padding: 12px 14px;
         font-size: 0.95rem;
-        white-space: nowrap;
         text-align: left;
         box-sizing: border-box;
         overflow: hidden;
