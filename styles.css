@@ -2823,14 +2823,6 @@ h2 em {
     font-size: 15px;
 }
 
-.partner-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
 
 /* Partner logo marquee (continuous right-to-left) */
 .partner-marquee {
@@ -2986,17 +2978,8 @@ h2 em {
     transform: none;
 }
 
-@media (max-width: 980px) {
-    .partner-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
 
 @media (max-width: 480px) {
-    .partner-grid {
-        gap: 12px;
-    }
-
     .partner-logo {
         height: 124px;
     }

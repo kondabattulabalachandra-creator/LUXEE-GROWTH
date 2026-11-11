@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (finePointer) {
-        document.querySelectorAll(".feature-card, .journal-grid a, .service-detail").forEach(card => {
+        document.querySelectorAll(".feature-card, .service-detail").forEach(card => {
             const canTilt = !reducedMotion && !card.classList.contains("service-detail");
             if (canTilt) {
                 card.dataset.tilt = "";
