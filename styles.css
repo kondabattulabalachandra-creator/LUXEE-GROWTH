@@ -3361,8 +3361,9 @@ h2 em {
     top: calc(100% + 12px);
     left: 50%;
     transform: translateX(-50%) translateY(8px);
-    min-width: 280px;
-    max-width: 360px;
+    min-width: 0;
+    max-width: min(360px, calc(100vw - 32px));
+    width: auto;
     padding: 8px;
     border-radius: 16px;
     background: rgba(16, 16, 15, 0.97);
