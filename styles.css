@@ -3464,6 +3464,7 @@ h2 em {
         max-height: 80vh;
         overflow-y: auto;
         pointer-events: auto;
+        transform: none;
     }
 
     .nav-dropdown.is-open .nav-caret {
