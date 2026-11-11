@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         navMenu.querySelectorAll("a").forEach(link => {
-            if (link.classList.contains("nav-dropdown-toggle")) return;
             link.addEventListener("click", closeMenu);
         });
 
@@ -41,57 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileNavQuery.addEventListener("change", event => {
             closeMenu();
             navMenu.inert = event.matches;
-        });
-    }
-
-    // Services dropdown
-    document.querySelectorAll(".nav-dropdown").forEach(dropdown => {
-        const toggle = dropdown.querySelector(".nav-dropdown-toggle");
-        const menu = dropdown.querySelector(".nav-dropdown-menu");
-        if (!toggle || !menu) return;
-
-        const setOpen = (open) => {
-            dropdown.classList.toggle("is-open", open);
-            toggle.setAttribute("aria-expanded", String(open));
-        };
-
-        toggle.addEventListener("click", event => {
-            // Allow ctrl/cmd+click or middle-click to navigate normally
-            if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
-            event.preventDefault();
-            setOpen(!dropdown.classList.contains("is-open"));
-        });
-
-        // Close when an item is chosen
-        menu.querySelectorAll(".nav-dropdown-item").forEach(item => {
-            item.addEventListener("click", () => {
-                setOpen(false);
-                if (navMenu && navMenu.classList.contains("active")) {
-                    navMenu.classList.remove("active");
-                    if (menuToggle) {
-                        menuToggle.setAttribute("aria-expanded", "false");
-                        menuToggle.setAttribute("aria-label", "Open navigation");
-                    }
-                    navMenu.inert = mobileNavQuery.matches;
-                }
-            });
-        });
-
-        // Close on outside click
-        document.addEventListener("click", event => {
-            if (!dropdown.contains(event.target)) setOpen(false);
-        });
-
-        // Close on escape
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape") setOpen(false);
-        });
-    });
-
-    // Prevent the mobile menu from closing when toggling the Services dropdown
-    if (menuToggle && navMenu) {
-        navMenu.querySelectorAll("a.nav-dropdown-toggle").forEach(toggle => {
-            toggle.addEventListener("click", event => event.stopPropagation());
         });
     }
 
