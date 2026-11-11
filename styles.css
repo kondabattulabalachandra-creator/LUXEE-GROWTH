@@ -3334,3 +3334,136 @@ h2 em {
         margin-top: 118px;
     }
 }
+
+/* ==== SERVICE TABLE ==== */
+.service-table-section {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+/* ---- Table base ---------------------------------------------------- */
+.service-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+  table-layout: fixed;
+  overflow-x: hidden;
+  font: 400 0.94rem var(--sans);
+  color: var(--ivory);
+}
+
+/* ---- Header -------------------------------------------------------- */
+.service-table thead th {
+  padding: 12px 8px;
+  text-align: left;
+  font-size: 0.81rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ivory-muted);
+  border-bottom: 1px solid rgba(201, 177, 125, 0.18);
+}
+
+/* ---- Cells --------------------------------------------------------- */
+.service-table td {
+  padding: 14px 10px;
+  border-bottom: 1px solid rgba(201, 177, 125, 0.12);
+  vertical-align: top;
+}
+
+/* Icon cells – keep the icon a bit larger for visual weight */
+.service-table td i {
+  display: inline-block;
+  font-size: 1.6rem;
+  color: var(--gold);
+  margin-right: 10px;
+  line-height: 1;
+}
+
+/* Description column – allow word‑break only if really needed */
+.service-table td:nth-child(2) {
+  max-width: 460px;
+  word-break: break-word;
+}
+
+/* “Learn more” column – right‑aligned button */
+.service-table td:nth-child(3) {
+  text-align: right;
+}
+
+/* ---- Responsive grid ----------------------------------------------- */
+
+/* Desktop: 3 columns per row */
+@media (min-width: 1024px) {
+  .service-table thead th,
+  .service-table td {
+    padding: 12px 6px;
+  }
+  .service-table thead th,
+  .service-table td i {
+    width: 33.333%;
+    float: left;
+  }
+  .service-table td:nth-child(2) {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+  }
+  .service-table td:nth-child(3) {
+    float: right;
+    width: 160px;
+  }
+}
+
+/* Tablet: 2 columns per row */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .service-table thead th,
+  .service-table td {
+    padding: 10px 4px;
+  }
+  .service-table thead th,
+  .service-table td i {
+    width: 50%;
+    float: left;
+  }
+  .service-table td:nth-child(2),
+  .service-table td:nth-child(3) {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+  }
+}
+
+/* Mobile: single column, stacked */
+@media (max-width: 767px) {
+  .service-table thead {
+    display: none;
+  }
+  .service-table td {
+    display: block;
+    padding: 16px 12px;
+    border-bottom: 1px solid rgba(201, 177, 125, 0.12);
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .service-table td i {
+    float: left;
+    margin-right: 12px;
+    font-size: 1.4rem;
+  }
+  .service-table td:nth-child(2) {
+    margin-left: 32px;
+  }
+  .service-table td:nth-child(3) {
+    text-align: left;
+    margin-top: 8px;
+  }
+  .service-table td .button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* --- Optional: give the table a very subtle “card‑like” feel -------- */
+.service-table tbody tr:last-child td {
+  border-bottom: none;
+}
