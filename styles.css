@@ -22,6 +22,7 @@
 }
 
 html {
+    overflow-x: hidden;
     scroll-behavior: smooth;
     scroll-padding-top: 96px;
 }
@@ -1350,7 +1351,7 @@ img {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        padding: 0 8px 0 16px;
+        padding: 0 16px;
         overflow-x: hidden;
         border-bottom: 1px solid var(--line-gold);
         background: rgba(16, 16, 15, 0.98);
@@ -1360,7 +1361,7 @@ img {
     }
 
     .nav-menu.active {
-        padding: 9px 24px 24px;
+        padding: 9px 16px 24px;
         clip-path: inset(0);
         pointer-events: auto;
     }
@@ -3463,14 +3464,24 @@ h2 em {
     }
 
     .nav-dropdown-item {
+        display: flex;
+        align-items: center;
         width: 100%;
         max-width: 100%;
+        min-width: 0;
         padding: 12px 14px;
         font-size: 0.92rem;
         box-sizing: border-box;
         overflow: hidden;
+        white-space: normal;
+        overflow-wrap: anywhere;
         word-break: break-word;
         transform: none;
+    }
+
+    .nav-dropdown-item i {
+        flex-shrink: 0;
+        min-width: 18px;
     }
 
     .nav-dropdown-item:hover,
