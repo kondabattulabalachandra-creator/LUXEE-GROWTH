@@ -269,3 +269,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+// Service table: make entire row clickable
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".svc-table tbody tr[data-href]").forEach(row => {
+    row.addEventListener("click", (e) => {
+      // Don't double-trigger when clicking the button itself
+      if (e.target.closest("a")) return;
+      const href = row.getAttribute("data-href");
+      if (href) window.location.href = href;
+    });
+    row.setAttribute("tabindex", "0");
+    row.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        const href = row.getAttribute("data-href");
+        if (href) window.location.href = href;
+      }
+    });
+  });
+});
