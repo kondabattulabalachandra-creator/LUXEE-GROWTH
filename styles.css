@@ -1763,7 +1763,7 @@ img {
     position: fixed;
     z-index: 900;
     right: 24px;
-    bottom: 24px;
+    bottom: 88px;
     display: grid;
     width: 48px;
     height: 48px;
@@ -1793,7 +1793,7 @@ img {
 .whatsapp-float {
     position: fixed;
     z-index: 900;
-    left: 24px;
+    right: 24px;
     bottom: 24px;
     display: inline-flex;
     align-items: center;
