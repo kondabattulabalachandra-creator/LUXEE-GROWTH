@@ -2832,6 +2832,51 @@ h2 em {
     list-style: none;
 }
 
+/* Partner logo marquee (continuous right-to-left) */
+.partner-marquee {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+
+.partner-track {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: max-content;
+    animation: partner-scroll 30s linear infinite;
+}
+
+.partner-track:hover,
+.partner-track:focus-within {
+    animation-play-state: paused;
+}
+
+.partner-track > li {
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 24px;
+}
+
+.partner-track .partner-card {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes partner-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .partner-track {
+        animation: none;
+    }
+}
+
 .partner-card {
     position: relative;
     display: flex;
