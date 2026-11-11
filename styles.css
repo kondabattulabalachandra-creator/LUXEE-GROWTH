@@ -3430,20 +3430,30 @@ h2 em {
         min-width: 0;
         max-width: none;
         width: 100%;
-        margin: 6px 0 10px;
-        padding: 6px;
+        margin: 6px 0 12px;
+        padding: 0;
         max-height: 0;
         overflow: hidden;
         opacity: 1;
         visibility: visible;
         pointer-events: none;
-        transition: max-height 260ms ease, padding 260ms ease, opacity 200ms ease;
+        transition: max-height 300ms ease, padding 300ms ease;
     }
 
     .nav-dropdown.is-open .nav-dropdown-menu {
-        max-height: 420px;
-        pointer-events: auto;
+        max-height: 80vh;
         padding: 6px;
+        pointer-events: auto;
+        overflow-y: auto;
+    }
+
+    .nav-dropdown-item {
+        padding: 13px 14px;
+        font-size: 0.95rem;
+    }
+
+    .nav-dropdown-item i {
+        font-size: 1rem;
     }
 
     .nav-dropdown.is-open .nav-caret {
