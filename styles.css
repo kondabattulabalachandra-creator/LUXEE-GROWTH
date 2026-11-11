@@ -1350,7 +1350,7 @@ img {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        padding: 0 16px;
+        padding: 0 8px 0 16px;
         overflow-x: hidden;
         border-bottom: 1px solid var(--line-gold);
         background: rgba(16, 16, 15, 0.98);
