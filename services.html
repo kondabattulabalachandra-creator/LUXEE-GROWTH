@@ -31,8 +31,8 @@
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=3">
-    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="styles.css?v=4">
+    <script src="scripts.js?v=2" defer></script>
 </head>
 
 <body id="top" data-page="services">
@@ -44,7 +44,17 @@
             </a>
             <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
                 <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link" href="services.html" aria-current="page">Services</a>
+                <div class="nav-dropdown" id="services-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="services.html" aria-current="page" aria-haspopup="true" aria-expanded="false">Services <i class="fa-solid fa-chevron-down nav-caret" aria-hidden="true"></i></a>
+                    <div class="nav-dropdown-menu" role="menu" aria-label="Services">
+                        <a class="nav-dropdown-item" href="services.html#local-search" role="menuitem"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Local search &amp; Google Business Profile</a>
+                        <a class="nav-dropdown-item" href="services.html#virtual-tours" role="menuitem"><i class="fa-solid fa-street-view" aria-hidden="true"></i>360° photography &amp; virtual tours</a>
+                        <a class="nav-dropdown-item" href="services.html#nfc-cards" role="menuitem"><i class="fa-solid fa-id-card" aria-hidden="true"></i>NFC review &amp; digital business cards</a>
+                        <a class="nav-dropdown-item" href="services.html#content" role="menuitem"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>Digital marketing &amp; content creation</a>
+                        <a class="nav-dropdown-item" href="services.html#web-design" role="menuitem"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i>Websites that make the next step clear</a>
+                        <a class="nav-dropdown-item" href="services.html#search" role="menuitem"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>Search engine optimisation</a>
+                    </div>
+                </div>
                 <a class="nav-link" href="contact.html">Contact</a>
                 <a class="nav-link nav-link-cta" href="contact.html"> meet us <i
                         class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
