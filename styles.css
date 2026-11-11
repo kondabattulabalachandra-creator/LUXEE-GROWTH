@@ -1793,8 +1793,9 @@ img {
 .whatsapp-float {
     position: fixed;
     z-index: 900;
-    right: 24px;
-    bottom: 24px;
+    right: 24px !important;
+    bottom: 24px !important;
+    left: auto !important;
     display: inline-flex;
     align-items: center;
     gap: 10px;
