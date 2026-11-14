@@ -86,7 +86,7 @@ flowchart TD
 
 ### Asset inventory
 
-`assets/illustrations/` contains `content-creation.svg`, `local-search.svg`, `nfc-cards.svg`, `seo-analytics.svg`, `studio-path.svg`, `virtual-tour.svg`, and `web-design.svg`, plus `journal-building.svg`, `journal-mobile.svg`, `journal-space.svg`, and `journal-work.svg`. The `journal-*` illustrations were not referenced by the inspected HTML, CSS, or JavaScript. `assets/partners/` contains `anutex.png`, `apollo-hospitals.svg`, `dtdc.png`, and `jawed-habib.png`; the home page displays them as external links.
+`assets/illustrations/` contains `content-creation.svg`, `local-search.svg`, `nfc-cards.svg`, `seo-analytics.svg`, `studio-path.svg`, `virtual-tour.svg`, and `web-design.svg`, plus `journal-building.svg`, `journal-mobile.svg`, `journal-space.svg`, and `journal-work.svg`. The `journal-*` illustrations were not referenced by the inspected HTML, CSS, or JavaScript. `assets/partners/` contains `anutex.png`, `apollo-hospitals.svg`, `dtdc.png`, `jawed-habib.png`, and `svm-grand-kompally.png`; the home page displays them as external links.
 
 The root `luxeegrowthlogo.jpeg` was not referenced by the inspected source. Keep it until you confirm it is no longer needed elsewhere; the active page logo is `assets/luxee-logo.png` (902 x 679 RGBA PNG). The favicon is a separate gold growth-mark set in the repository root. No source maps, generated build output, or automated asset pipeline were found.
 
